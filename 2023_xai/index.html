@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Thoughts on explainability
+*(was: Explainable performance evalution in ML)* <!-- .element: class="fragment" -->
+### Peter Flach, University of Bristol
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Outline
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Setting the scene
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->XAI toolboxes
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Explainability factsheets
+1. &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Explainability for timeseries
+1. &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Actionable counterfactuals
+1. &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Incorporating probabilities
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Setting the scene 
+This is how Kacper Sokol defines explainability in his PhD thesis: 
+<style>
+	.red-border{
+		border: 5px solid red;
+	}
+</style>
+<div class="block">
+
+$
+\texttt{Explainability} = \\
+\underbrace{%
+\texttt{Reasoning} \left( \texttt{Transparency} |  \texttt{Background Knowledge} \right)%
+}_{\textit{understanding}}%
+$
+</div>
+
+<!-- .element: class="red-border" -->
+
+[Explainability is in the mind of the beholder](https://arxiv.org/abs/2112.14466)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## A simple geometric view
+<img src="figs/XAIplot.jpg" alt="" style="width: 700px; object-fit: fill">
+
+- in black: decision boundary and weight vector
+- in red: feature vector of instance currently on the negative side
+- in blue: recourse/counterfactual (closest point on decision boundary)
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# XAI toolboxes
+<img src="figs/KS.jpg" alt="" style="width: 200px; object-fit: fill" class="fragment">
+
+Most of this work was led by Kacper Sokol.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## FAT forensics
+- [JOSS paper (2020)](https://joss.theoj.org/papers/10.21105/joss.01904)
+- [Software Impacts paper (2022)](https://www.softwareimpacts.com/article/S2665-9638(22)00095-1/fulltext)
+- [toolbox with demos](https://fat-forensics.org/getting_started/)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## FAT forensics
+<img src="figs/academic_software-HCAI.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## bLIMEy: build LIME yourself
+<img src="figs/blimey.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## bLIMEy: build LIME yourself
+- [paper](https://arxiv.org/abs/1910.13016)
+- [code](https://fat-forensics.org/how_to/transparency/tabular-surrogates.html)
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Explainability Fact Sheets
+A framework for systematic assessment of explainable approaches
+- [(Sokol and Flach, AIES 2020)](https://dl.acm.org/doi/abs/10.1145/3351095.3372870)
+- [video](https://www.youtube.com/watch?v=Hy8udfSU5dM)
+- [Kacper's slides](https://usi.xmlx.io/slides/1_introduction/taxonomy.html)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="figs/taxonomy.png" alt="" style="object-fit: scale-down">
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Explainability for time series
+<img src="figs/TS.jpg" alt="" style="width: 200px; object-fit: fill" class="fragment">
+
+- [Sivill and Flach, AISTATS 2022](https://proceedings.mlr.press/v151/sivill22a.html)
+- [video](https://slideslive.com/38980514/limesegment-meaningful-realistic-time-series-explanations?ref=recommended)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Segmenting time series
+<img src="figs/SegmentationDemonstration.png" alt="" style="object-fit: scale-down">
+
+Segments and changepoints are constructed by considering similarity relations that preserve adjacency.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Background vs. foreground
+<img src="figs/Perturb_Intution.png" alt="" style="object-fit: scale-down">
+
+**Background** are frequency components that are present throughout.
+
+**Foreground** components can then be "switched off" as required for LIME.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Similarity
+<img src="figs/zero_TS_demonstration.png" alt="" style="object-fit: scale-down">
+
+With *dynamic time warping* the third perturbation is most similar to the original.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Case study on MIMIC
+<img src="figs/sepsis_casestudy_LS.png" alt="" style="object-fit: scale-down">
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Counterfactuals
+<div class="block">
+
+<!-- .element: class="red-border fragment" -->
+The recourse to be applied to the feature vector in order to change the predicted
+class.
+</div>
+
+
+This work was led by Rafael Poyadzi. <!-- .element: class="fragment" -->
+<img src="figs/RP.jpg" alt="" style="width: 200px; object-fit: fill" class="fragment">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+[FACE: Feasible and Actionable Counterfactual Explanations (AIES 2020)](https://dl.acm.org/doi/10.1145/3375627.3375850)
+
+<img src="figs/face.png" alt="" style="width: 500px; object-fit: fill">
+
+Four counterfactuals for X: 
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->A has low margin; 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->B is in a low-density region; 
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->C requires crossing a low-density region; 
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->**D is the one found by FACE.**
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example paths found by the FACE algorithm
+<img src="figs/face2.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## From 0 to 8: *MNIST* example
+<img src="figs/mnist0.png" alt="" style="object-fit: scale-down">
+
+<img src="figs/mnist1.png" alt="" style="object-fit: scale-down">
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<!--# Shapley and friends
+--->
+<!--# Towards explainable evaluation
+- [paper](https://www.ijimai.org/journal/bibcite/reference/2901)
+--->
+# Incorporating probabilities
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## LIME and probabilities
+<img src="figs/LIMEprobs.png" alt="" style="object-fit: scale-down" class="red-border">
+
+[(from LIME github repo)](https://github.com/marcotcr/lime)
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Log-linear models
+LIME assumes a linear relationship between features and predicted probabilities. 
+
+*log-linear* models assume instead that the log-odds (aka logits) are linear in the features. 
+
+Probabilities are obtained via softmax, which is the inverse of the logit function.
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## From probabilities to log-odds
+Term | Expression | Value
+----|----|----
+*Posterior probability* | `$\mathrm{softmax}(x) = \frac{1}{1+e^{-x}} = \hat{p}$` | `$0.52$` 
+*Posterior odds* | `$e^x=\frac{\hat{p}}{1-\hat{p}}$` | `$\frac{0.52}{0.48} = 1.083$`
+*Log-odds* | `$x = \ln \frac{\hat{p}}{1-\hat{p}} = \mathrm{logit}(\hat{p})$`  | `$-0.65 - -0.73 = 0.08$`
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Additive vs. multiplicative feature attributions
+Additive term `$\delta$` in logit | Multiplicative term `$e^{\delta}$` in odds | `$\hat{p}=0.5$` becomes
+----|-----|----
+0.1 | 1.11 | 0.52
+0.2 | 1.22 | 0.55
+0.4 | 1.49 | 0.60
+0.7 | 2.01 | 0.67
+1.0 | 2.72 | 0.73
+2.0 | 7.39 | 0.88
+5.0 | 148 | 0.99
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## ...which gives a sigmoid
+<img src="figs/Sigmoid.png" alt="" style="object-fit: scale-down">
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Ban the boundary!
+There is nothing particularly special about `$\hat{p}=0.5$`. Hence the notion of an **absolute** counterfactual is somewhat misleading. 
+<div class="block">
+
+<!-- .element: class="fragment" -->
+So a *relative* counterfactual can be defined as 
+</div>
+
+
+<div class="block">
+
+<!-- .element: class="red-border fragment" -->
+The recourse to be applied to the feature vector in order to change the predicted
+~class~
+probability by `$p_{\delta}$`.
+</div>
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Wrapping up
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="stretch-row flex-even" style="position: absolute; left: 0%; top: 0%; height: 30%; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-evenly" align="stretch">
+
+## Many thanks to...
+</div>
+<div class="stretch-row flex-even" style="position: absolute; left: 10%; top: 35%; height: 30%; width: 80%; display: flex; flex-direction: row; align-items: center; justify-content: space-evenly" align="stretch">
+
+Kacper Sokol
+
+Torty Sivill
+
+Rafael Poyadzi
+</div>
+<div class="stretch-row flex-even" style="position: absolute; left: 10%; top: 70%; height: 30%; width: 80%; display: flex; flex-direction: row; align-items: center; justify-content: space-evenly" align="stretch">
+
+Raul Santos-Rodriguez
+
+Matt Clifford
+
+Alex Hepburn
+</div>
+<div class="stretch-row flex-even" style="position: absolute; left: 10%; top: 35%; height: 30%; width: 80%; display: flex; flex-direction: row; align-items: center; justify-content: space-evenly" align="stretch">
+
+<img src="figs/KS.jpg" alt="" style="object-fit: scale-down" class="fragment">
+
+<img src="figs/TS.jpg" alt="" style="object-fit: scale-down" class="fragment">
+
+<img src="figs/RP.jpg" alt="" style="object-fit: scale-down" class="fragment">
+
+</div>
+<div class="stretch-row flex-even" style="position: absolute; left: 10%; top: 70%; height: 30%; width: 80%; display: flex; flex-direction: row; align-items: center; justify-content: space-evenly" align="stretch">
+
+<img src="figs/RSR.jpg" alt="" style="object-fit: scale-down" class="fragment">
+
+<img src="figs/MC.jpg" alt="" style="object-fit: scale-down" class="fragment">
+
+<img src="figs/AH.jpg" alt="" style="object-fit: scale-down" class="fragment">
+
+</div>
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
