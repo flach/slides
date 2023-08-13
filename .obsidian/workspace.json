@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "7a23c61a83ca04d1",
+        "id": "1d6d8f2ea78bd9a1",
         "type": "tabs",
         "children": [
           {
-            "id": "cc489a2dd905fd6b",
+            "id": "80bd07f3631680a2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2023_nightingale/MD/All.md",
-                "mode": "source",
-                "source": true
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -87,7 +83,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2023_nightingale/MD/All.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +99,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2023_nightingale/MD/All.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,9 +120,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2023_nightingale/MD/All.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -148,11 +140,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cc489a2dd905fd6b",
+  "active": "80bd07f3631680a2",
   "lastOpenFiles": [
+    "2023_nightingale/MD/All.md",
     "2023_nightingale/img/chatGPT.jpg",
     "2023_nightingale/img/ChatGPT.jpg",
-    "2023_nightingale/MD/All.md",
     "2023_nightingale/img/8cUcYQ-87c049f3-eee0-4595-b187-952d46566ba5.pdf",
     "2023_nightingale/img/LB.jpg",
     "2023_nightingale/img/betacal.jpg",
