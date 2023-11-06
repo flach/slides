@@ -209,7 +209,7 @@ Unless the classifier's predictions are equally distributed over the classes on 
 The same applies a fortiori to F-score, which aggregates recall and precision.  <!-- .element: class="fragment" -->
 
 
-### An early result: Precision-Recall-Gain curves
+### Precision-Recall-Gain curves
 
 ![from ROC via PR to PRG](img/PRG.png)
 
@@ -329,4 +329,4 @@ Proper treatment of performance evaluation in machine learning and AI requires a
 
 Part of this work was funded through a project with the Alan Turing Institute; papers, code and videos can be accessed [here](https://www.turing.ac.uk/research/research-projects/measurement-theory-data-science-and-ai#recent-updates).
 
-Many thanks to Hao Song, the Research Associate on the project; and collaborators Jose Hernandez-Orallo, Kacper Sokol, Meelis Kull, Tom Diethe, Yu Chen, Ricardo Prudencio, Telmo Filho, Miquel Perello-Nieto, Raul Santos-Rodriguez and many others.  <!-- .element: class="fragment" -->
+Many thanks to Hao Song, the Research Associate on the project; and collaborators Yu Chen, Tom Diethe, Jose Hernandez-Orallo, Conor Houghton, Meelis Kull, Paul-Gauthier Noe, Miquel Perello-Nieto, Ricardo Prudencio, Raul Santos-Rodriguez, Telmo Silva Filho, Kacper Sokol,  and many others.  <!-- .element: class="fragment" -->
