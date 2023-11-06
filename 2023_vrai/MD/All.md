@@ -62,7 +62,7 @@ Standard treatment is that dimensions can cancel.
 ### Transcendental functions
 
 Transcendental functions ($\exp$, $\log$, $\sin$ etc.) require dimensionless and *unitless* quantities.
-- E.g., $\log V$ where $V$ has dimension $L^3$ should be thought of as $\log (V/v)$ where $v$ is the unit of $V$.
+- E.g., pH $= -\log [H^+]$ where $[H^+]$ has dimension $mol \cdot L^{-1}$ should be thought of as $-\log ([H_+]/h)$ where $h$ is the unit of molar concentration.
 
 
 ### From dimensions to signatures
@@ -182,7 +182,7 @@ Measurements are relevant in machine learning and AI for at least two reasons:
   - E.g., taking the expectation assumes a linear scale.
 - *Performance metrics* are also measurements, and hence the same applies. 
 
-[This project](https://www.turing.ac.uk/research/research-projects/measurement-theory-data-science-and-ai) looked at foundational issues, of which there are many! 
+<!--[This project](https://www.turing.ac.uk/research/research-projects/measurement-theory-data-science-and-ai) looked at foundational issues, of which there are many! -->
 
 
 ### Performance measurement is easy...
@@ -207,6 +207,15 @@ Is a classifier's *precision* on the entire data set equal to the average of the
 Unless the classifier's predictions are equally distributed over the classes on each part, which is neither likely nor under the experimenter's control.  <!-- .element: class="fragment" -->
 
 The same applies a fortiori to F-score, which aggregates recall and precision.  <!-- .element: class="fragment" -->
+
+
+### Reminder: F-score
+
+Common definition: $F = \frac{2prec\cdot rec}{prec+rec}$.
+
+As harmonic mean: $\frac{1}{F} = \left(\frac{1}{rec} + \frac{1}{prec}\right)/2$. <!-- .element: class="fragment" -->
+
+Peter's preferred definition: $$F = \frac{TP}{TP + {\color{red}{\frac{FN+FP}{2}}}} = \frac{2TP}{2TP + FN+FP}$$ <!-- .element: class="fragment" -->
 
 
 ### Precision-Recall-Gain curves
