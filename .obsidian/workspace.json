@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1d6d8f2ea78bd9a1",
+        "id": "a437050ed8fb2fcc",
         "type": "tabs",
         "children": [
           {
-            "id": "80bd07f3631680a2",
+            "id": "af72e126233b3e9a",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -140,8 +140,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "80bd07f3631680a2",
+  "active": "af72e126233b3e9a",
   "lastOpenFiles": [
+    "Untitled.md",
+    "_site/Untitled.md",
     "2023_nightingale/MD/All.md",
     "2023_nightingale/img/chatGPT.jpg",
     "2023_nightingale/img/ChatGPT.jpg",

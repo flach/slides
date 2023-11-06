@@ -1,290 +1,176 @@
-## Why should you care about measurement?
+## AI in the time of ChatGPT
 
-Measurements are relevant in data science and AI for at least two reasons:
-- *Features* often are measurements on some scale, which dictates admissible statistics and operations.
-  - E.g., taking the expectation assumes a linear scale.
-- *Performance metrics* are also measurements, and hence the same applies. 
-
-[This project](https://www.turing.ac.uk/research/research-projects/measurement-theory-data-science-and-ai) looked at foundational issues, of which there are many! 
-
-
-### Performance measurement is easy...
-
-If I split a data set in two or more parts, is a classifier's *accuracy* on the entire data set equal to the average* of the accuracies on the separate parts? 
-
-Yes -- provided the parts are of equal size (e.g., cross-validation).  <!-- .element: class="fragment" -->
-
-What about per-class recall?  <!-- .element: class="fragment" -->
-
-Yes -- provided the parts have the same class distribution (e.g., stratified CV). <!-- .element: class="fragment" -->
-
-*To be precise: the arithmetic mean. 
-
-
-### ...or is it?
-
-Is a classifier's *precision* on the entire data set equal to the average of the precisions on the parts? 
-
-**IT IS NOT!**  <!-- .element: class="fragment" -->
-
-Unless the classifier's predictions are equally distributed on each part, which is (a) very unlikely, and (b) not under the experimenter's control.  <!-- .element: class="fragment" -->
-
-The same applies a fortiori to F-score, which aggregates recall and precision.  <!-- .element: class="fragment" -->
-
-
-### An early result: Precision-Recall-Gain curves
-
-![from ROC via PR to PRG](img/PRG.png)
-
-[Flach, P. and Kull, M., 2015. Precision-recall-gain curves: PR analysis done right. NIPS 2015.](http://people.cs.bris.ac.uk/~flach/PRGcurves)
-
-
-### How we fixed it: change of scale
-
-1. Take reciprocals:
-$$
-\begin{align}
-prec &= TP/(TP+FP) \rightarrow 1/prec = 1+FP/TP \\\\
-rec  &= TP/(TP+FN) \rightarrow 1/rec  = 1+FN/TP \\\\
-\\ \\\\
-\end{align}
-$$
-2. Clip $[1,\infty]$ to $[1,1/\pi]$ to exlude overly small values of precision/recall.
-$$
-\begin{align}
-\\ \\\\
-\end{align}
-$$  <!-- .element: class="fragment" -->
-3. Map $[1,1/\pi]$ back to unit interval:
-$$
-\begin{align}
-precG &= \frac{prec-\pi}{(1-\pi)prec} = 1 - \frac{\pi}{1-\pi} FP/TP \\\\
-recG  &= \frac{rec-\pi}{(1-\pi)rec} = 1 - \frac{\pi}{1-\pi} FN/TP \\\\
-\end{align}
-$$  <!-- .element: class="fragment" -->
-
-
-### Et voila!
-
-![PR curve](img/fig2-left.png) <!-- .element height="40%" width="40%" -->
-![PRG curve](img/fig2-right.png) <!-- .element height="40%" width="40%" -->
-
- - area under PRG curve $\propto$ *expected $F_1$ score*;
- - convex hull can be used to determine the *optimal operating point* for a given trade-off between precision and recall.
+> In the time of ChatGPT, artificial intelligence had become a marvel of the modern world, a magical creation that seemed almost alive. It was as if the machines had a soul, capable of understanding and empathizing with human emotions. ChatGPT was a symbol of this new era, a mysterious being with a secret language that only the initiated could understand. But amidst the awe and wonder, there were also whispers of fear, for no one knew what the future held in this age of AI.
 
 
 ### What I will talk about
 
-- [Scales, units, dimensions and types](#/2)
-  - Perspectives from psychology, physics and computer science
-- [You can't always measure what you want](#/3)
-  - Latent variable models
-- [Conclusions and outlook](#/4)
+- [What ChatGPT is -- and isn't](#/2)
+- [We need to talk about (over)confidence](#/3)
+- [AI in the time of ChatGPT](#/4)
+
+<!--
+ChatGPT makes mistakes with reasoning and arithmetic. But the surprising thing is it can do reasoning and arithmetic at all. This is somehow teased out of the language data. 
+While reasoning, arithmetic and many other are emergent capabilities, this doesn't mean that they can be achieved perfectly by ever larger LMs. 
+Putting linguistic elements together in surprising and potentially novel ways is the essence of language, so "hallucination" shouldn't come as a surprise. "Generate something that looks like a URL/literature reference etc." This exemplifies the need for fact-checking (easy in the case of URLs). 
+Achievements on "human" tasks have three ingredients: machine, human, task. E.g. Deep Blue, Kasparov, chess; AlphaGo, Lee Se Dong, Go. Conclusions should involve the triple: e.g., chess is more suited to algorithmic treatment than we thought. 
+Games like chess and Go have emerged at a sweet spot: it can be played by children, but only few can play it really well. 
+Nobody is surprised if the world champion mental calculation is beaten by a computer; or if the world champion road cycling is beaten by a motorbike. 
+(something about models as a commodity)
+(DNNs' modular design make them particularly suitable for finetuning and transfer learning)
+(something about neuro-symbolic AI?)
+
+Foster: these systems are designed to make stuff up
+-->
 
 ----
 
-## Scales, units, dimensions and types
+## What ChatGPT is -- and isn't
 
-Perhaps surprisingly, there doesn't seem to be a definitive framework to link all these concepts together.
-
-We'll look at it from a few perspectives:
-
-- [Levels of measurement](#/2/1)
-- [The physics perspective](#/2/6)
-- [The computer science perspective](#/2/9)
+- ChatGPT = large language model + *dialogue model*
+- We'll look at ways to think about its capabilities. 
 
 
-## Levels of measurement
+### Not just a large language model
 
-![Stevens (1946)](img/Stevens1946.gif)  <!-- .element height="20%" width="20%" -->
-![Stevens' levels](img/StevensTable.png)  <!-- .element height="65%" width="65%" -->
+![ChatGPT schematic](img/chatGPT.jpg)<!-- .element  height="80%" width="80%" -->
 
-Early proposal from a psychologist [(Stevens, 1946)](https://www.jstor.org/stable/1671815), still influential although somewhat rigid and limited.
-
-
-### Stevens' typology
-
-Scale type | Description | Transformations
----|---|---
-Nominal | no order, no unit | permutation
-Ordinal | order, no unit | monotone
-Interval | can choose unit and zero | affine
-Ratio | fixed zero, can choose unit | linear
-
-The appropriate scale type is determined by the transformation furthest down the list which is still "meaningful".
+[from https://blog.bytebytego.com/p/ep-44-how-does-ChatGPT-work](https://blog.bytebytego.com/p/ep-44-how-does-ChatGPT-work)
 
 
-### Admissible statistics
+### Training the dialogue model
 
-Scale type | Statistics
----|---|---
-Nominal | mode
-Ordinal | median, quantile, range
-Interval | arithmetic mean, variance
-Ratio | geometric mean, coefficient of variation
+![ChatGPT finetuing](img/finetuning.jpg)<!-- .element  height="80%" width="80%" -->
 
-Each scale type inherits statistics from levels above.
+[from https://openai.com/blog/ChatGPT](https://openai.com/blog/ChatGPT)
 
 
-### Levels of measurement: discussion
+### What others say
 
-1. Many statisticians challenge the rigid connection between scale types and admissible statistics.
-  - E.g., Spearman's rank correlation statistic would not be admissible for ordinal data.
-2. Many common scales do not fit well:
-  - scales bounded from both sides;
-  - scales with a fixed unit;
-  - integer measurements.
+> Sometimes I think it's as if aliens had landed and people haven't realized because they speak very good English.
 
-Such scales abound in machine learning!  <!-- .element: class="fragment" -->
+[Geoffrey Hinton in an interview with MIT Technology Review](https://www.technologyreview.com/2023/05/02/1072528/geoffrey-hinton-google-why-scared-ai/)
 
 
-### Alternative typologies
+### The ultimate bullshit machine
 
-[Mosteller and Tukey (1977)](https://books.google.co.uk/books?id=n4dYAAAAMAAJ):
-*Names*,
-*Grades* (e.g., beginner, intermediate, advanced),
-*Ranks* (1, 2, ...),
-*Counted fractions* (e.g., percentages),
-*Counts* (non-negative integers),
-*Amounts* (non-negative real numbers),
-*Balances* (unbounded, positive or negative values).
+> For the bullshitter [all] bets are off: he is neither on the side of the true nor on the side of the false. His eye is not on the facts at all, as the eyes of the honest man and of the liar are, except insofar as they may be pertinent to his interest in getting away with what he says. He does not care whether the things he says describe reality correctly. 
 
-[Chrisman (1998)](https://doi.org/10.1559/152304098782383043):
-*Nominal*,
-*Graded membership* (e.g., fuzzy sets),
-*Ordinal*,
-*Interval*,
-*Log-interval*,
-*Extensive ratio*,
-*Cyclical ratio* (e.g., angles or time of day)
-*Derived ratio*,
-*Counts*,
-*Absolute* (e.g., probabilities).
+[Harry Frankfurt, On Bullshit. Princeton University Press, 2005.](https://press.princeton.edu/books/hardcover/9780691122946/on-bullshit)
 
 
-## The physics perspective
+### Mansplaining-as-a-Service
 
-- Physical quantities have an associated **dimension** [(Fourier, 1822)](https://books.google.co.uk/books?id=No8IAAAAMAAJ&pg=PA128#v=onepage&q&f=false).
-- In order to be compared and added or subtracted, quantities need to be *commensurable* (have the same dimension).
-- Incommensurable quantities may be multiplied and divided, giving new derived dimensions.
-  - E.g. pressure has dimension $M L^{-1} T^{-2}$
-  - SI units Pascal = Newton/m$^2$ = kg/(m*s$^2$).
+![https://pullpatch.com/products/ladies-mansplaining-is-short-for-man-explaining-removable-patch](img/mansplaining.jpg)<!-- .element align="right" height="35%" width="35%" -->
+
+"If someone perceives my responses as mansplaining, I apologize and encourage them to provide specific feedback on how I can improve and be more respectful in my interactions." (ChatGPT)
 
 
-### Dimensional analysis: discussion
+### Detour: "computer" chess
 
-- Dimensions can cancel, leading to *dimensionless quantities*.
-  - E.g., angle is a ratio of lengths, hence dimensionless; but it has units (radians, degrees).
-  - Sometimes units also cancel, e.g. ABV has unit ml ethanol per 100 ml liquid (percentage).
-- Transcendental functions ($\exp$, $\sin$ etc.) require dimensionless and *unitless* quantities.
-  - E.g., $\log V$ where $V$ has dimension $L^3$ should be thought of as $\log (V/v)$ where $v$ is the unit of $V$.
+![The original Mechanical Turk](img/MechanicalTurk.jpg)<!-- .element align="left" height="30%" width="30%" -->
+![PF & GK](img/kasparov.jpg)<!-- .element align="right" height="50%" width="50%" -->
 
 
-### How to build on this in data science and AI?
+### A computer walks into a chess tournament...
 
-- Both perspectives (levels of measurement and dimensional analysis) have interesting features but appear overly focused on establishing a 'true' scale type or dimension for a measurement.
-  - Machine learning needs something more *flexible*.
-  - In particular, a better treatment of "dimensionless" quantities which are everywhere you look!
-    - relative frequencies, probabilities, evaluation metrics...
+![Garry Kasparov against Deep Blue (1997)](img/DeepBlue.jpg)<!-- .element align="right" height="35%" width="35%" -->
 
+...and beats a chess grandmaster. 
 
-## The computer science perspective
-
-- *Abstract data types* are more flexible than dimensions or scale types as they can be adapted to the situation of interest.
-  - provide relevant *meta-data* about measurements
-  - link to useful *operations*.
-- In particular, **higher-order functional languages** such as Haskell allow reasoning with and about types.
-  - This provides a formal language and logic for measurement meta-data.
-- The challenge is to develop a generally agreed ["Systeme international"](https://en.wikipedia.org/wiki/International_System_of_Units) of ML measurements.
+Does that say something about <!-- .element: class="fragment" -->
+- computers? <!-- .element: class="fragment" -->
+- humans? <!-- .element: class="fragment" -->
+- chess? <!-- .element: class="fragment" -->
 
 
-### Example: Shannon entropy
+### Capturing the essence of human language
 
-[![xpecBits Haskell code](img/xpecBits.png)  <!-- .element height="80%" width="80%" -->](https://replit.com/@flach/ThoughtfulWarlikeRuntimelibrary)
+> I think we have to view this as a -- potentially surprising -- scientific discovery: that somehow in a neural net like ChatGPT's it's possible to capture the essence of what human brains manage to do in generating language.
+
+[Stephen Wolfram: What Is ChatGPT Doing ... and Why Does It Work?](https://writings.stephenwolfram.com/2023/02/what-is-ChatGPT-doing-and-why-does-it-work/)
 
 
-### Example: Scoring rules
+### Can ChatGPT do reasoning?
 
-[![Scoring rules](img/genEntropy.png)  <!-- .element height="70%" width="70%" -->](https://replit.com/@flach/KeyBewitchedRoute)
+![Timeslots](img/timeslots.jpg)
+
+
+### Can ChatGPT do reasoning? (2)
+
+![Trophy & suitcase](img/trophy.jpg)
+
+
+### Can ChatGPT do reasoning? (3)
+
+![Cars](img/cars.jpg)
+
+
+### Can ChatGPT do reasoning? (4)
+
+- Amusing mistakes like these aside, it is rather remarkable that (limited) reasoning capabilities have arisen without having been explicitly trained on such tasks. 
+- This demonstrates the surprising power of large language data. 
+
+
+### "Hallucination" and fact-checking
+
+- Putting linguistic elements together in surprising and potentially novel ways is the essence of language, so "hallucination" or "confabulation" shouldn't come as a surprise.
+- The following are two very different things: 
+   - "Generate something that looks like a URL"; 
+   - "Generate an existing and meaningful URL". 
+- Some forms of fact-checking can be done post-hoc, but others will need to be built into the language model.
+
+
+### Has AI passed the Turing Test?
+
+I am not aware of a formally run Turing Test with ChatGPT or one of the other LLM-driven chatbots, but...
+
+...it seems obvious to me that the imitation game has lost its relevance, and we need something new. <!-- .element: class="fragment" -->
 
 ----
 
-## You can't always measure what you want...
-
-- Psychologists have long understood that people's abilities (and the difficulty of a task) are *not directly observable* and need to be estimated.
-  - **Item-response theory**, factor analysis
-- We can adapt those *latent variable models* to machine learning, to estimate **ability** of classifiers as well as **difficulty** of instances and datasets.
+## We need to talk about (over)confidence
 
 
-### IRT from a machine learning perspective
+### What is overconfidence? 
 
-![IRT](img/IRT1.png)
+![Overconfidence](img/overconfidence.jpg) <!-- .element align="right" height="40%" width="40%" -->
 
-- $\theta_i$: ability of participant $i$
-- $\delta_j$, $a_j$: difficulty & discrimination of item $j$
-- $x_{ij}$: binary response (correct/incorrect)
+An overconfident classifier thinks it's better at separating classes than it actually is. 
 
-
-### Beta-IRT
-
-![Beta-IRT](img/BIRT1.png)
-
-- continuous responses $p_{ij}$
-- abilities & difficulties $\in [0,1]$
+Hence we need to make predicted probabilities less extreme by pushing them toward the centre. <!-- .element: class="fragment" -->
 
 
-### Beta-IRT: flexible Item Characteristic Curves
+### Why does it matter? 
 
-![Beta-IRT ICC](img/BIRT2.png)
-
-- discrimination $a_j$ can be negative, indicating an item that confuses high-ability participants!  <!-- .element: class="fragment" -->
-
-
-### Idea 1:  Identifying noisy examples
-
-![BIRT for noisy examples](img/BIRT3.png) <!-- .element height="80%" width="80%" -->
-
-- [Chen, Y., Prudencio, R.B., Diethe, T. and Flach, P., 2019. $\beta^3$-IRT: A New Item Response Model and its Applications. AISTATS 2019.](http://proceedings.mlr.press/v89/chen19b.html)
+Optimal decisions can **only** be made with calibrated probabilities. 
+- Example: If we trained on balanced classes but want to deploy with 4 times as many positives compared to negatives, we lower the decision threshold to 0.2. <!-- .element: class="fragment" -->
+- With a poor probability estimator such as naive Bayes, decision thresholds have to be learned. <!-- .element: class="fragment" -->
 
 
-### Idea 2:  Adaptive testing
+### What to do about overconfidence
 
-Use a trained IRT model to evaluate a new classifier on a small number of datasets.
+![Betacal](img/betacal.jpg) <!-- .element height="50%" width="50%" -->
 
-1. Start with initial guess of classifier ability.
-2. Choose next dataset using an *item selection criterion*.
-3. Evaluate classifier and update ability estimation.
-4. Repeat until stopping criterion is achieved.
+[Shameless plug](https://link.springer.com/article/10.1007/s10994-023-06336-7) <!-- .element: class="fragment" -->
 
 
-### CAT results
+### Computer says 'I Don't Know'
 
-![CAT](img/CAT.png)  <!-- .element height="70%" width="70%" -->
+![Little Britain](img/LB.jpg) <!-- .element align="right" height="200px" -->
 
-- [Song, H. and Flach, P., 2020. Efficient and Robust Model Benchmarks with Item Response Theory and Adaptive Testing. Int J Interactive Multimedia and AI 2021.](https://ijimai.org/journal/bibcite/reference/2901)
+[Background Check: A general technique to build more reliable and versatile classifiers (ICDM 2016)](https://reframe.github.io/background_check/)
 
 ----
 
-## Outlook
+## AI in the time of ChatGPT
 
-Ultimately, empirical ML needs to make *causal* statements:
-
-> Algorithm A outperformed algorithm B **because** the classes were highly imbalanced.
-
-- I.e., if the classes were re-balanced (counterfactual intervention) the difference in performance would disappear.    <!-- .element: class="fragment" -->
-  - NB. In empirical ML we can actually carry out interventions, which makes causal inference a whole lot easier!   <!-- .element: class="fragment" -->
-
-
-## Conclusions
-
-Proper treatment of performance evaluation in data science and AI requires a sophisticated **measurement framework** with the following components:
-- *Coherent types and meta-data* for the observable performance indicators;
-- *Latent-variable models* for the unobservable performance indicators of interest;
-- *Causal models* to allow for counterfactual reasoning.
+- The distinction between learning and reasoning is much less clearcut once you train on language data. 
+- It is to be expected that other task layers on top of LLMs will give rise to many other capabilities. 
+- How such capabilities can be assessed and measured is a wide-open question, see e.g. [Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models](https://arxiv.org/abs/2206.04615). 
+- Properly quantifying confidence and imbuing AI with the capability to say 'I don't know' is key for trustworthiness. 
 
 
 ### Acknowledgements
 
-Part of this work was funded through a project with the Alan Turing Institute; papers, code and videos can be accessed [here](https://www.turing.ac.uk/research/research-projects/measurement-theory-data-science-and-ai#recent-updates).
-
-Many thanks to Hao Song, the Research Associate on the project; and collaborators Jose Hernandez-Orallo, Kacper Sokol, Meelis Kull, Tom Diethe, Yu Chen, Ricardo Prudencio, Telmo Filho, Miquel Perello-Nieto, Raul Santos-Rodriguez and many others.  <!-- .element: class="fragment" -->
+Many thanks to collaborators Yu Chen, Tom Diethe, Jose Hernandez-Orallo, Meelis Kull, Miquel Perello-Nieto, Ricardo Prudencio, Raul Santos-Rodriguez, Telmo Silva Filho, Kacper Sokol, Hao Song, and many others. 

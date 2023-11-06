@@ -1,160 +1,89 @@
-## Why should you care about measurement?
+## Introduction
 
-Measurements are relevant in machine learning and discovery science for at least two reasons:
-- *Features* are often are measurements on some scale, and we need to understand the properties of the scale, admissible operations, etc.
-  - E.g., the arithmetic mean is not always appropriate.
-- *Performance metrics* are also measurements, and hence the same applies!
-  - Taking expectations, area under curve etc. may not be coherent.
+I'm primarily a machine learner, but also work in AI and data science. 
 
+I don't know much about IR, but have thought long and hard about performance and calibration of ML classifiers. 
 
-### Measuring things is easy, right?
+I think some of these ideas extend to IR, but would be very interested to hear your feedback. 
 
-Using a calibrated measuring instrument (e.g., a ruler) we map the object under measurement $a$ to a real number $M(a)$.
-
-This mapping should be such that if I *concatenate* two objects $a \circ b$ there should be a corresponding numerical operation $\oplus$ on the measurements (e.g., addition), establishing a **scale**.
-
-![M1](img/M1.png)   <!-- .element height="50%" width="50%" -->
+Disclaimer: I am not a statistician!  <!-- .element: class="fragment" -->
 
 
-### If I can concatenate, I can average
+### Audience participation!
 
-*Averaging* can also be understood in terms of concatenation: we are looking for $M(c)$ for some $c$ such that $M(a \circ b) = M(c \circ c)$.
+Q1: Why is $F_1$ the *harmonic* mean of precision and recall?
 
-Clearly this gives a value in between $M(a)$ and $M(b)$. Other properties depend on the **scale** used.
-
-Let's look at some examples.
-
-
-### Last weekend...
-
-...I went on two bicycle rides.
-On Saturday my average speed was 20 km/h,
-on Sunday it was 30 km/h.
-
-- Concatenating the two trips, I calculated my overall average speed as 25 km/h.
-What can I say about the two trips?
-  1. They were equally far (in distance).
-  2. They were equally long (in time).  **CORRECT!** <!-- .element: class="fragment" -->
-  3. Neither.   
+1. It's a choice, it could equally well have been an arithmetic or geometric mean. <!-- .element: class="fragment" -->
+2. It corresponds to averaging the mistakes a classifier makes. <!-- .element: class="fragment" -->
+3. Another reason. <!-- .element: class="fragment" -->
 
 
-### The weekend before...
+### More audience participation!
 
-...I also did two rides with average speeds 20 km/h and 30 km/h.
+Q2: When is $F_1$ preferred over accuracy-based measures (micro/macro-accuracy)?
 
-- This time I calculated my overall average speed as 24 km/h.
-What can I say about these two trips?
-  1. They were equally far (in distance).  **CORRECT!** <!-- .element: class="fragment" -->
-  2. They were equally long (in time).
-  3. Neither.   
+1. When we have many more negatives than positives. <!-- .element: class="fragment" -->
+1. When true negatives don't add value. <!-- .element: class="fragment" -->
+1. Another reason. <!-- .element: class="fragment" -->
 
 
-### Means and weighted means
+### Last one, I promise :-)
 
-**Trip 1**: distance $d_1$, time $t_1$, velocity $v_1=d_1/t_1$.
+Q3: If we use $F_{1/2}$, then...
 
-**Trip 2**: distance $d_2$, time $t_2$, velocity $v_2=d_2/t_2$.
-
-**Overall**: distance $d=d_1+d_2$, time $t=t_1+t_2$, velocity $v=(d_1+d_2)/(t_1+t_2)$.
-
-- $t_1=t_2 \Rightarrow v = (v_1+v_2)/2 = AM(v_1,v_2)$ <!-- .element: class="fragment" -->
-  - or in general: $v = {\color{red}{(t_1/t)}}\cdot v_1 + {\color{red}{(t_2/t)}}\cdot v_2$ <!-- .element: class="fragment" -->
-- $d_1=d_2 \Rightarrow v = 2/(1/v_1+1/v_2) = HM(v_1,v_2)$ <!-- .element: class="fragment" -->
-  - or in general: $1/v = {\color{red}{(d_1/d)}}\cdot 1/v_1 + {\color{red}{(d_2/d)}}\cdot 1/v_2$ <!-- .element: class="fragment" -->
+1. Precision gets twice the weight of recall. <!-- .element: class="fragment" -->
+1. Precision gets four times the weight of recall. <!-- .element: class="fragment" -->
+1. Neither. <!-- .element: class="fragment" -->
 
 
-### What's my point?
+### $F_{1}$-score
 
-- When we average ratios we are making assumptions:
-  - the arithmetic mean assumes **denominators** stay the same;
-  - the harmonic mean assumes **numerators** stay the same.
+Common definition: $F_1 = \frac{2prec\cdot rec}{prec+rec}$.
 
-Alternatively, we can use *weighted* means (either arithmetic or harmonic).
+As harmonic mean: $\frac{1}{F_1} = \left(\frac{1}{rec} + \frac{1}{prec}\right)/2$. <!-- .element: class="fragment" -->
 
-
-### Audience participation! Q1
-
-I apply a binary classifier on two test sets A and B.
-
-On A and B separately, the classifier achieves 70% and 80% *accuracy*
-(the proportion of correctly classified instances).
-
-- When I combine A and B into a single test set
-and re-run the classifier its accuracy is 75%.
-What can I say about A and B?   <!-- .element: class="fragment" -->
-  1. They contain the same number of instances.   <!-- .element: class="fragment" -->
-  2. They contain the same number of positives.   <!-- .element: class="fragment" -->
-  3. Both.   <!-- .element: class="fragment" -->
-  4. Neither.   <!-- .element: class="fragment" -->
+Peter's preferred definition: $$F_{1} = \frac{TP}{TP + {\color{red}{\frac{FN+FP}{2}}}} = \frac{2TP}{2TP + FN+FP}$$ <!-- .element: class="fragment" -->
 
 
-### Audience participation! Q2
+### $F_1$-score
 
-(same question, but now for recall = true positive rate)
+$\frac{1}{F_1} = \left(\frac{1}{rec} + \frac{1}{prec}\right)/2$
 
-On two other test sets C and D, the classifier achieves 70% and 80% *recall*
-(the proportion of correctly classified positives).
+$F_{1} = \frac{2TP}{2TP + FN+FP}$
 
-- When I combine C and D into a single test set
-and re-run the classifier its recall is 75%.
-What can I say about C and D?
-  1. They contain the same number of instances.
-  2. They contain the same number of positives.
-  3. Both.
-  4. Neither.
+Aka accuracy over a *modified* confusion matrix:
 
-
-### Audience participation! Q3
-
-(same question, but now for precision)
-
-On yet other test sets E and F, the classifier achieves 70% and 80% *precision*
-(the proportion of correct positive predictions).
-
-- When I combine E and F into a single test set
-and re-run the classifier its precision is 75%.
-What can I say about E and F?
-  1. They contain the same number of instances.
-  2. They contain the same number of positives.
-  3. Both.
-  4. Neither.
+$$
+\begin{array}{lccc}
+\hline
+           & \text{Pred}\ + & \text{Pred}\ - &     \\\\ \hline
+\text{Actual}\ + & TP            & FN            & Pos \\\\
+\text{Actual}\ - & FP            & {\color{red}{TP}}            & Neg{\color{red}{-TN+TP}} \\\\
+           & \ldots          & \ldots          & \ldots  \\\\ \hline
+\end{array}
+$$
 
 
-### Correct answers
+### $F_{\beta}$-score
 
-(Q1: 1) $acc(A \circ B) = AM(acc(A),acc(B))$ implies A and B contain *the same number of instances*.
+$1/F_{\beta} = \frac{\beta^2}{\beta^2+1} 1/rec + \frac{1}{\beta^2+1} 1/prec$
 
-(Q2: 2) $tpr(C \circ D) = AM(tpr(C),tpr(D))$ implies C and D contain *the same number of positives*.
+$F_{\beta} = \frac{(\beta^2+1) TP}{(\beta^2+1) TP + \beta^2 FN + FP}$
 
-(Q3: 4) $prec(E \circ F) = AM(prec(E),prec(F))$ implies **the classifier makes the same number of positive predictions on E and F**.
+Aka accuracy over a *modified* confusion matrix:
+
+$$
+\begin{array}{lccc}
+\hline
+           & \text{Pred}\ + & \text{Pred}\ - &     \\\\ \hline
+\text{Actual}\ + & {\color{red}{\beta^2}} TP            & {\color{red}{\beta^2}} FN            & {\color{red}{\beta^2}} Pos \\\\
+\text{Actual}\ - & FP            & {\color{red}{TP}}            & Neg{\color{red}{-TN+TP}} \\\\
+           & \ldots          & \ldots          & \ldots  \\\\ \hline
+\end{array}
+$$
 
 
-### What's my point?
-
-- Using the (unweighted) arithmetic mean on performance metrics needs to be **justified**:
-  - for accuracy the test sets need to be equal in size (as in cross-validation);
-  - for recall the class distributions need to be the same (stratified CV);
-  - for precision the proportions of positive predictions need to be the same (??).
-
-Arithmetically averaging precision is rarely justified.
-The same holds for F-score (more on that later).    <!-- .element: class="fragment" -->
-
-
-### What I will talk about
-
-- [Changes of scale](#/2)
-  - Precision-recall curves and how to fix them
-  - How log-loss relates to squared loss
-- [Scales, units, dimensions and types](#/3)
-  - Perspectives from psychology, physics and computer science
-- [You can't always measure what you want](#/4)
-  - Latent variable models
-  - Causal models
-- [Conclusions and outlook](#/5)
-
-----
-
-## Changes of scale
+### Refresher: Scales and Means
 
 Most means $M(x,y)$ are *quasi-arithmetic*:
 there exists a **change of scale** $g: \mathbb{R} \rightarrow \mathbb{R}$ such that
@@ -171,60 +100,107 @@ Generalised | $\sqrt[p]{(x^p+y^p)/2}$ | $x^p$
 
 ### Comparing means
 
-![Isometrics plot](img/means.png)  <!-- .element height="75%" width="75%" -->
+![Isometrics plot](img/means.png)  <!-- .element height="60%" width="60%" -->
 
 Towards `max` (`min`) the mean emphasises large (small) values.
 
 
-### Change of scale examples in ML
+### Outline of the talk
 
-1. *Precision-recall curves* have many issues that can be solved with a change of scale.
-2. Loss measures such as *log-loss* and *squared loss* can be related to each other through a change of scale.
+1. [Precision-recall curves considered harmful](#/2)
+2. [Work *in progress* on PRG curves](#/3)
+3. [More sophisticated measurement models](#/3)
 
+----
 
-## ROC curve and precision-recall curve
+## ROC plots 101
 
-![PR curve](img/fig1-left.png) <!-- .element height="40%" width="40%" -->
-![PRG curve](img/fig1-right.png) <!-- .element height="40%" width="40%" -->
+![Empirical ROC curve](img/PRG2-fig-ExROC.png) <!-- .element height="40%" width="40%" -->
+![Parametric ROC curve](img/PRG2-fig-ROC1.png) <!-- .element height="40%" width="40%" -->
 
-In contrast to ROC curves, PR curves don't allow linear interpolation and don't have a meaningful area under the curve.    <!-- .element: class="fragment" -->
-
-
-### $F_{\beta}$-score
-
-Aka accuracy over a *modified* confusion matrix:
-
-$$
-\begin{array}{lccc}
-\hline
-           & \text{Pred}\ + & \text{Pred}\ - &     \\\\ \hline
-\text{Actual}\ + & {\color{red}{\beta^2}} TP            & {\color{red}{\beta^2}} FN            & {\color{red}{\beta^2}} Pos \\\\
-\text{Actual}\ - & FP            & {\color{red}{TP}}            & Neg{\color{red}{-TN+TP}} \\\\
-           & \ldots          & \ldots          & \ldots  \\\\ \hline
-\end{array}
-$$
-
-$$F_{\beta} = \frac{(\beta^2+1) TP}{(\beta^2+1) TP + \beta^2 FN + FP}$$
-
-$$1/F_{\beta} = \frac{\beta^2}{\beta^2+1} 1/rec + \frac{1}{\beta^2+1} 1/prec$$
+Shows how true and false positive rate co-vary with decision threshold.
 
 
-### Fixing PR curves through scale transformations
+### Why ROC plots are great
+
+- **universal baselines** - ascending diagonal gives expected performance of baseline (random) model.
+- **linear interpolation** - points on connecting line segments achieve same performance under specific class trade-offs.
+- **Pareto front** - linear interpolation gives ROC convex hull (ROCCH).
+- **area under curve** - meaningful measure of ranking performance *and* expected accuracy. 
+- **calibration** - ROCCH segments can be converted into meaningful probabilities. 
+
+
+### Linear interpolation
+
+Any point on a straight line between thresholds (or classifiers) A and B can be achieved by making a suitably biased random choice between them. 
+
+If that line has slope $Neg/Pos$ (or 1) then all points on the line achieve the same micro-accuracy (or macro-accuracy).
+
+This can be generalised to other trade-offs between classes (e.g., misclassification costs). 
+
+
+### Area under ROC curve (AUROC)
+
+This estimates the probability that a randomly selected positive is *ranked* before a randomly selected negative. 
+
+It is also linearly related to expected *classification performance* if thresholds are set to make a particular proportion of positive predictions (pred pos *rate*).
+
+$$\int_0^1 acc\ d\ rate = \pi(1-\pi)(2AUROC-1)+1/2$$
+
+[Hernandez-Orallo, Flach, Ferri. JMLR 13(91), 2012.](https://www.jmlr.org/papers/v13/hernandez-orallo12a.html)
+
+
+### Calibration
+
+Slopes of ROCCH segments are empirical likelihood ratios associated with score intervals, and can be used to obtain calibrated probabilities (isotonic regression). 
+
+If a perfectly calibrated classifier assigns score ${\color{red}c}$ to an instance, then the instance is on the decision boundary for 
+$acc_{\color{red}c} = 2{\color{red}c}\pi tpr + 2{\color{red}c}(1-\pi) fpr$. 
+
+[Song et al. Classifier Calibration: How to assess and improve predicted class probabilities: a survey. arXiv](https://arxiv.org/abs/2112.10327)
+
+
+### From ROC plots to PR plots
+
+![ROC curve](img/fig1-left.png) <!-- .element height="40%" width="40%" -->
+![PR curve](img/fig1-right.png) <!-- .element height="40%" width="40%" -->
+
+There is a point-to-point correspondence between ROC space and PR space. 
+
+
+### Why PR plots aren't great
+
+- **non-universal baselines** - random performance gives horizontal line which depends on class distribution.
+- **non-linear interpolation** - iso-$F_{\beta}$ lines are hyperbolic.
+- **Pareto front** is well-defined but non-convex.
+- **uninterpretable area** - because of incoherence of taking arithmetic mean of precision values *and* unachievable region. 
+- **no calibration**. 
+
+
+### From PR plots to PR**Gain** plots
+
+![PR curve](img/fig2-left.png) <!-- .element height="40%" width="40%" -->
+![PRG curve](img/fig2-right.png) <!-- .element height="40%" width="40%" -->
+
+[Flach and Kull. Precision-recall-gain curves: PR analysis done right. NIPS 2015.](http://people.cs.bris.ac.uk/~flach/PRGcurves)
+
+
+### Why PRG plots are great
+
+- **baseline** - descending diagonal gives expected performance of *always-positive* classifier <br>
+($rec=1, prec=\pi, F_1=\frac{2\pi}{\pi+1}$).
+- **linear interpolation** is restored. 
+- **Pareto front** is once again convex.
+- **interpretable area** - AUPRG is related to expected $F_1$ when operating points are chosen in a particular way. 
+- **calibration** - scores can be converted into values of $\beta$ such that the instance is on the $F_{\beta}$ decision boundary. 
+
+
+### How did we do it?
 
 1. Take reciprocals:
-$$
-\begin{align}
-prec &= TP/(TP+FP) \rightarrow 1/prec = 1+FP/TP \\\\
-rec  &= TP/(TP+FN) \rightarrow 1/rec  = 1+FN/TP \\\\
-\\ \\\\
-\end{align}
-$$
-2. Clip $[1,\infty]$ to $[1,1/\pi]$ to exlude overly small values of precision/recall.
-$$
-\begin{align}
-\\ \\\\
-\end{align}
-$$  <!-- .element: class="fragment" -->
+$prec = TP/(TP+FP) \rightarrow 1/prec = 1+FP/TP$
+$rec  = TP/(TP+FN) \rightarrow 1/rec  = 1+FN/TP$
+2. Clip $[1,\infty]$ to $[1,1/\pi]$ to exlude overly small values of precision/recall. <!-- .element: class="fragment" -->
 3. Map $[1,1/\pi]$ back to unit interval:
 $$
 \begin{align}
@@ -234,331 +210,65 @@ recG  &= \frac{rec-\pi}{(1-\pi)rec} = 1 - \frac{\pi}{1-\pi} FN/TP \\\\
 $$  <!-- .element: class="fragment" -->
 
 
-### Et voila!
-
-![PR curve](img/fig2-left.png) <!-- .element height="40%" width="40%" -->
-![PRG curve](img/fig2-right.png) <!-- .element height="40%" width="40%" -->
-
- - area under PRG curve $\propto$ *expected $F_1$ score*;
- - convex hull can be used to determine the *optimal operating point* for a given $\beta^2$.
-
-
- ### More here
-
- [Flach, P. and Kull, M., 2015. Precision-recall-gain curves: PR analysis done right. NIPS 2015.](http://people.cs.bris.ac.uk/~flach/PRGcurves)
+### PRG can rank models differently from PR
 
 ![from ROC via PR to PRG](img/PRG.png)
 
-
-## Squared loss and Log-loss
-
-- These are most commonly used to evaluate *probability estimates* against 'ideal' probabilities 0 and 1.
-- Alternatively, they can be interpreted as *expected misclassification loss*, aggregating over all possible **skews** (class prevalence or cost proportion).
-- From the latter perspective they differ only in the *scale* on which skews are measured.
+Solid line has higher AUROC and AUPRG but lower AUPR than dashed line.
 
 
-### Cost-sensitive classification
+### Calibrated scores from PRG curves
 
-- Let `$c_+$` be the cost of misclassifying a positive (i.e., a false negative)
-and `$c_-$` the cost of misclassifying a negative (i.e., a false positive).
-- `$c=\frac{c_{+}}{c_{+}+c_{-}}$` is the *cost proportion*.
-- Two ways to derive `$c_+,c_-$` from $c$:
-  - set a fixed budget `$b=c_++c_-$`, then `$c_+=bc$` and `$c_-=b(1-c)$`.
-  - set a fixed budget `$d=1/(1/c_++1/c_-)$`, then `$c_+=d/(1-c)$` and `$c_-=d/c$`.
-- Varying $c$ uniformly in $[0,1]$ and setting the decision threshold equal to $c$, the first gives squared loss as expected loss, the second log-loss.    <!-- .element: class="fragment" -->
+![ROC curve](img/fig3-left.png) <!-- .element height="40%" width="40%" -->
+![PR curve](img/fig3-right.png) <!-- .element height="40%" width="40%" -->
 
+Left: scores calibrated for $acc_{c}$. 
 
-### Notation
-
-Symbol | Range | Meaning
----|---|---
-`$c_{+}$`, `$c_{-}$` | `$\mathbb{R}^+$` | cost of misclassifying a positive/negative
-`$c=\frac{c_{+}}{c_{+}+c_{-}}$` | `$[0,1]$` | cost proportion
-`$\pi$` | `$[0,1]$` | proportion of positives
-
-`$F_{+}(t)$`, `$F_{-}(t)$`: true/false positive rate at threshold $t$, interpreted as a cumulative distribution
-
-`$f_{+}(s)$`, `$f_{-}(s)$`: score densities for positive/negative class
-
-
-### Cost-sensitive classification
-
-- Loss at a particular operating point:
-
-`$$Q(t; \pi , c_{+}, c_{-}) =  c_{+} \pi (1 -F_{+}(t)) + c_{-} (1-\pi) F_{-}(t)$$`
-
-- Let $b$ be the *arithmetic* sum of `$c_{+}, c_{-}$`:
-
-`$$Q(t; \pi , b, c) =  b\left[c \pi (1 -F_{+}(t)) + (1-c) (1-\pi) F_{-}(t)\right]$$`
-
-- Assuming $b, c$ independent:
-
-`$$L = \mathbb{E}[b]\int_0 ^1 \left[c \pi (1 -F_{+}(t)) + (1-c) (1-\pi) F_{-}(t)\right] dc $$`
-
-
-### Deriving squared loss
-
-`$$L = \mathbb{E}[b]\int_0 ^1 \left[c \pi (1 -F_{+}(t)) + (1-c) (1-\pi) F_{-}(t)\right] dc $$`
-
-- Assuming a calibrated probabilistic classifier, then $t=c$ is optimal; with a budget $\mathbb{E}[b]=2$:
-
-`$$ L = \pi \int_0^1 s^{2} f_{+}(s) ds + (1-\pi) \int_0^1 (1-s)^{2} f_{-}(s) ds $$`
-
-- This is squared loss, also known as the Brier score.
-
-
-### Changing the cost scale
-
-- Starting again from loss at threshold $t$:
-
-`$$Q(t; \pi , c_{+}, c_{-}) =  c_{+} \pi (1 -F_{+}(t)) + c_{-} (1-\pi) F_{-}(t)$$`
-
-- Let $d$ be the *harmonic* sum of `$c_{+}, c_{-}$`:
-
-`$$Q(t; \pi , d, c) =  d\left[\frac{1}{1-c} \pi (1 -F_{+}(t)) + \frac{1}{c} (1-\pi) F_{-}(t)\right]$$`
-
-- Assuming $d, c$ independent:
-
-`$$L = \mathbb{E}[d]\int_0 ^1 \left[\frac{1}{1-c} \pi (1 -F_{+}(t)) + \frac{1}{c} (1-\pi) F_{-}(t)\right] dc $$`
-
-
-### Deriving log-loss
-
-`$$L = \mathbb{E}[d]\int_0 ^1 \left[\frac{1}{1-c} \pi (1 -F_{+}(t)) + \frac{1}{c} (1-\pi) F_{-}(t)\right] dc $$`
-
-- Assuming a calibrated probabilistic classifier and a budget $\mathbb{E}[d]=1/2$:
-
-`$$ L = \pi/2 \int_0^1 -\ln (1-s) f_{+}(s) ds + (1-\pi)/2 \int_0^1 -\ln s f_{-}(s) ds $$`
-
-- This is log-loss.
-
-
-### Cost curves
-
-- Calibration: poor (left), perfect (right).
-- Cost scale: arithmetic (blue), harmonic (red).
-
-![Cost plot](img/BC-LL-left.png)  <!-- .element height="40%" width="40%" -->
-![Perfect calibration](img/BC-LL-right.png)   <!-- .element height="40%" width="40%" -->
-
-Log-loss emphasises extreme values of $c$.  <!-- .element: class="fragment" -->
-
-
-### More here
-
-[Flach, P., 2015. Cost-Sensitive Classification Meets Proper Scoring Rules. Second international workshop on learning over multiple contexts (LMCE'15) at ECML-PKDD 2015.](http://dmip.webs.upv.es/LMCE2015/Papers/LMCE_2015_submission_5.pdf)
+Right: scores calibrated for $F_{\beta}$.
 
 ----
 
-## Scales, units, dimensions and types
+## Work *in progress* on PRG curves
 
-So we've seen the use of a mathematical treatment of scales. What about things like units and dimensions?
+$AUPRG = \frac{\pi}{1-\pi}\int \frac{tpr-fpr}{tpr^3}\ d\ tpr$
 
-Perhaps surprisingly, there doesn't seem to be a definitive framework to link all these concepts together.
-We'll look at it from a few more perspectives:
-
-- Levels of measurement
-- The physics perspective
-- The computer science perspective
+![instance weights](img/PRG2-fig-AUPRG2.png) <!-- .element height="50%" width="50%" -->
 
 
-## Levels of measurement
+### Weighted ROC curves
 
-![Stevens (1946)](img/Stevens1946.gif)  <!-- .element height="20%" width="20%" -->
-![Stevens' levels](img/StevensTable.png)  <!-- .element height="65%" width="65%" -->
+![ROC curve](img/PRG2-fig-scratchExwPRG-left.png) <!-- .element height="40%" width="40%" -->
+![PR curve](img/PRG2-fig-scratchExwPRG-right.png) <!-- .element height="40%" width="40%" -->
 
-Early proposal from a psychologist [(Stevens, 1946)](https://www.jstor.org/stable/1671815), still influential although somewhat rigid and limited.
-
-
-### Stevens' typology
-
-Scale type | Description | Transformations
----|---|---
-Nominal | no order, no unit | permutation
-Ordinal | order, no unit | monotone
-Interval | can choose unit and zero | affine
-Ratio | fixed zero, can choose unit | linear
-
-The appropriate scale type is determined by the transformation furthest down the list which is still "meaningful".
+*Instance weights* allow us to translate PRG curves back to weighted ROC curves with the same area. 
 
 
-### Admissible statistics
+### Instance weights
 
-Scale type | Statistics
----|---|---
-Nominal | mode
-Ordinal | median, quantile, range
-Interval | arithmetic mean, variance
-Ratio | geometric mean, coefficient of variation
+Let $r$ and $s$ be the true positive rates that obtain when thresholding just before or just after a positive example, then its weight is $\frac{\pi}{1-\pi}\frac{1}{rs}$. 
 
-Each scale type inherits statistics from levels above.
+Horizontal movement in ROC space corresponds to changes in precision which is influenced by both positives and negatives, but can nevertheless be precisely characterised in a similar way. 
 
 
-### Levels of measurement: discussion
+### Non-destructive truncation
 
-1. Many statisticians challenge the rigid connection between scale types and admissible statistics.
-  - E.g., Spearman's rank correlation statistic would not be admissible for ordinal data.
-2. Many common scales do not fit well:
-  - scales bounded from both sides;
-  - scales with a fixed unit;
-  - integer measurements.
+In the NIPS'15 paper we truncated the PR curve so that $\pi\leq rec\leq 1$. 
 
-Such scales abound in machine learning!  <!-- .element: class="fragment" -->
+Before truncating we can pad the ranking at the front with $\frac{\pi}{1-\pi}Pos$ pseudo-instances, all labelled positive. 
 
-
-### Alternative typologies
-
-[Mosteller and Tukey (1977)](https://books.google.co.uk/books?id=n4dYAAAAMAAJ):
-*Names*,
-*Grades* (e.g., beginner, intermediate, advanced),
-*Ranks* (1, 2, ...),
-*Counted fractions* (e.g., percentages),
-*Counts* (non-negative integers),
-*Amounts* (non-negative real numbers),
-*Balances* (unbounded, positive or negative values).
-
-[Chrisman (1998)](https://doi.org/10.1559/152304098782383043):
-*Nominal*,
-*Graded membership* (e.g., fuzzy sets),
-*Ordinal*,
-*Interval*,
-*Log-interval*,
-*Extensive ratio*,
-*Cyclical ratio* (e.g., angles or time of day)
-*Derived ratio*,
-*Counts*,
-*Absolute* (e.g., probabilities).
-
-
-## The physics perspective
-
-- Physical quantities have an associated **dimension** [(Fourier, 1822)](https://books.google.co.uk/books?id=No8IAAAAMAAJ&pg=PA128#v=onepage&q&f=false).
-- In order to be compared and added or subtracted, quantities need to be *commensurable* (have the same dimension).
-- Incommensurable quantities may be multiplied and divided, giving new derived dimensions.
-  - E.g. pressure has dimension $M L^{-1} T^{-2}$
-  - SI units Pascal = Newton/m$^2$ = kg/(m*s$^2$).
-
-
-### Dimensional analysis: discussion
-
-- Dimensions can cancel, leading to *dimensionless quantities*.
-  - E.g., angle is a ratio of lengths, hence dimensionless; but it has units (radians, degrees).
-  - Sometimes units also cancel, e.g. ABV has unit ml ethanol per 100 ml liquid (percentage).
-- Transcendental functions ($\exp$, $\sin$ etc.) require dimensionless and *unitless* quantities.
-  - E.g., $\log V$ where $V$ has dimension $L^3$ should be thought of as $\log (V/v)$ where $v$ is the unit of $V$.
-
-
-## How do we build on this in ML?
-
-- Both perspectives (levels of measurement and dimensional analysis) have interesting features but appear overly focused on establishing a 'true' scale type or dimension for a measurement.
-  - Machine learning needs something more *flexible*.
-  - In particular, a better treatment of "dimensionless" quantities which are everywhere you look!
-    - relative frequencies, probabilities, evaluation metrics...
-
-
-### Why we need flexibility
-
-- Let $p$ be the parameter of a Bernoulli distribution (e.g, coin comes up head with probability $p$).
-Then
-  - the *variance* of this distribution (i.e., spread around the mean) is $p(1-p)$;
-  - its *entropy* (i.e., information content of a coin toss on average) is $-p \log p - (1-p) \log (1-p)$.
-- At first sight these seem very different things, and hence don't share scale, unit, or dimension.   <!-- .element: class="fragment" -->
-  - However, I'm going to put forward an argument that they can be seen as
-different ways of measuring the same thing!   <!-- .element: class="fragment" -->
-
-
-### Context: proper scoring rules
-
-- *Scoring rule* $\phi(p,y)$ returns the loss of predicting $p$ for class $1$ when the true class is $y$
-  - `$\phi : \mathbb{P} \times \{0,1\} \mapsto \mathbb{R}$`
-  - often takes the form `$\phi(p,y) = y h(p) + (1-y) h(1-p)$`
-- *Expected score* $s(p,q) = \mathbb{E}_{y \sim q} \phi(p,y)$
-  - `$s : \mathbb{P} \times \mathbb{P} \mapsto \mathbb{R}$`
-  - with the above form of $\phi$: `$s(p,q) = q h(p) + (1-q) h(1-p)$`
-
-
-### **Generalised** divergence and entropy
-
-- *Divergence* $d(p,q) = s(p,q) - s(q,q)$
-  - `$d : \mathbb{P} \times \mathbb{P} \mapsto \mathbb{R}$`.
-  - The scoring rule is (strictly) *proper* if $p=q$ is (sole) minimiser of $d(p,q)$ for a given $q$.
-  - NB. this turns an interval scale into a ratio scale.
-- *Entropy* $e(q) = s(q,q)$
-  - `$e : \mathbb{P} \mapsto \mathbb{R}$`
-
-
-### Logarithmic scoring rule
-
-$$
-\begin{align}
-h(p) &= -\log p  \\\\
-\phi(p,y) &= -y \log p - (1-y)\log (1-p)  \\\\
-s(p,q) &= -q\log p -(1-q)\log (1-p)  \\\\
-\\ \\\\
-d(p,q) &= -q\log \frac{p}{q} - (1-q) \frac{1-p}{1-q}  \\\\
-e(q) &= -q\log q - (1-q)\log (1-q)  \\\\
-\\ \\\\
-\end{align}
-$$
-
-The last two equations are known as *Kullback-Leibler divergence* and *Shannon entropy*.
-
-
-### Quadratic scoring rule
-
-$$
-\begin{align}
-h(p) &= (1-p)^2 \\\\
-\phi(p,y) &= y(1-p)^2+(1-y)p^2 \\\\
-s(p,q) &= q(1-p)^2+(1-q)p^2 \\\\
-\\ \\\\
-d(p,q) &= (p-q)^2 \\\\
-e(q) &= q(1-q) \\\\
-\\ \\\\
-\end{align}
-$$
-
-This scoring rule is also known as the *Brier score* [(Brier, 1950)](https://web.archive.org/web/20171023012737/https://docs.lib.noaa.gov/rescue/mwr/078/mwr-078-01-0001.pdf).
-
-
-### And therefore...
-
-- Bernoulli variance and Shannon entropy are both realisations of generalised entropy, using different scoring rules.
-  - It would therefore make sense to treat them as having the same "type", at least from this perspective.
-- BTW Not a big surprise for (decision) tree lovers, as
-  - Bernoulli variance aka Gini index is one way of measuring impurity of a node (as used in CART);
-  - Shannon entropy is another (as used in ID3 and C4.5).
-
-
-### Scoring rules in a typed functional language
-
-[![Scoring rules](img/genEntropy.png)  <!-- .element height="70%" width="70%" -->](https://repl.it/repls/KeyBewitchedRoute)
-
-
-### Shannon entropy as expected number of bits
-
-[![xpecBits Haskell code](img/xpecBits.png)  <!-- .element height="80%" width="80%" -->](https://repl.it/repls/ThoughtfulWarlikeRuntimelibrary)
-
-
-### What's my point?
-
-- *Abstract data types* are more flexible than dimensions or scale types as they can be adapted to the situation of interest.
-  - provide relevant *meta-data* about measurements
-  - link to useful *operations*.
-- In particular, **higher-order functional languages** such as Haskell allow reasoning with and about types.
-  - This provides a formal language and logic for measurement meta-data.
-- The challenge is to develop a generally agreed ["Systeme international"](https://en.wikipedia.org/wiki/International_System_of_Units) of ML measurements.
+This gives rise to adjusted measures, e.g. 
+$rec'=\frac{(1-\pi)TP+\pi Pos}{Pos}$ and
+$recG'=\frac{TP}{(1-\pi)TP+\pi Pos}$.
 
 ----
 
-## And finally...
+## More sophisticated measurement models
 
-- You can't always measure what you want!
-  - Latent variable models
-  - Causal models
+- What you see is not what you want: estimating task difficulty and model ability
+- Understanding *why* performance differences occur
 
 
-## Latent variable models
+### Latent variable models
 
 - Psychologists have long understood that people's abilities (and the difficulty of a task) are *not directly observable* and need to be estimated.
   - Item-response theory, factor analysis
@@ -590,24 +300,44 @@ Use a trained IRT model to evaluate a new classifier on a small number of datase
 
 ### More here
 
-- [Chen, Y., Prudencio, R.B., Diethe, T. and Flach, P., 2019. $\beta^3$-IRT: A New Item Response Model and its Applications. AISTATS 2019.](http://proceedings.mlr.press/v89/chen19b.html)
-- [Song, H., and Flach, P., 2020. Towards Efficient and Robust Model Benchmarks with Item Response Theory and Adaptive Testing. Evaluating Progress in AI workshop at ECAI 2020.](http://dmip.webs.upv.es/EPAI2020/papers/EPAI_2020_paper_7.pdf)
+- [Chen, Silva Filho, Prudencio, Diethe, Flach. $\beta^3$-IRT: A New Item Response Model and its Applications. AISTATS 2019.](http://proceedings.mlr.press/v89/chen19b.html)
+- [Song and Flach. Efficient and Robust Model Benchmarks with Item Response Theory and Adaptive Testing. IJ Interactive Multimedia & AI 6(5), 2021.](https://www.turing.ac.uk/sites/default/files/2021-07/efficient_and_robust_paper.pdf)
 
 
-## Causal models
+### Measurement and causality
 
 Ultimately, empirical ML needs to make *causal* statements:
 
 > Algorithm A outperformed algorithm B **because** the classes were highly imbalanced.
 
 - I.e., if the classes were re-balanced (counterfactual intervention) the difference in performance would disappear.    <!-- .element: class="fragment" -->
-  - NB. In empirical ML we can actually carry out interventions, which makes causal inference a whole lot easier!   <!-- .element: class="fragment" -->
+  - In empirical ML we usually can carry out interventions
+  (aka ablation study).   <!-- .element: class="fragment" -->
+
+----
+
+## To conclude
+
+Perhaps surprisingly, a definitive account of key measurement concepts such as scales, units, and dimensions is still missing. 
+
+*Stevens' typology* (nominal, ordinal, interval, ratio) is well-known but limited: e.g., it doesn't cover scales bounded from both sides (probabilities!). 
+
+In physics, quantities are understood to have an associated *dimension*, but these can cancel (angles, percentages) and don't allow for transcendental functions (logs). 
 
 
-## Outlook
+### To conclude (2)
+
+These issues notwithstanding, performance evaluation in ML and IR is often formulaic and simplistic. 
+
+Including every performance indicator you can think of may make the **big table** look impressive, but doesn't necessarily exude confidence that you know what you're doing. 
+
+Indicators such as accuracy (for classification), AUC (for ranking), Brier score (for probability estimation) should really be thought of as different 'dimensions' as in physics. What is your use case?
+
+
+### To conclude (3)
 
 Proper treatment of performance evaluation in machine learning (and AI more generally) requires a sophisticated model with the following components:
-- *Measurement theory* for the observable performance indicators;
+- *Measurement scales* for the observable performance indicators;
 - *Latent-variable models* for the unobservable performance indicators of interest;
 - *Causal models* to allow for counterfactual reasoning.
 
@@ -616,4 +346,4 @@ Proper treatment of performance evaluation in machine learning (and AI more gene
 
 Part of this work was funded through a [project with the Alan Turing Institute](https://www.turing.ac.uk/research/research-projects/measurement-theory-data-science-and-ai).
 
-Many thanks to Jose Hernandez-Orallo, Kacper Sokol, Meelis Kull, Tom Diethe, Yu Chen, Ricardo Prudencio, Telmo Filho, Miquel Perello-Nieto, Hao Song and many others.  <!-- .element: class="fragment" -->
+Many thanks to Jose Hernandez-Orallo, Kacper Sokol, Meelis Kull, Tom Diethe, Yu Chen, Ricardo Prudencio, Telmo Filho, Miquel Perello-Nieto, Hao Song, Su Whan Baek, and many others.  <!-- .element: class="fragment" -->
