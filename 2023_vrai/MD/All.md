@@ -62,7 +62,10 @@ Standard treatment is that dimensions can cancel.
 ### Transcendental functions
 
 Transcendental functions ($\exp$, $\log$, $\sin$ etc.) require dimensionless and *unitless* quantities.
+
 - E.g., pH $= -\log [H^+]$ where $[H^+]$ has dimension $mol \cdot L^{-1}$ should be thought of as $-\log ([H_+]/h)$ where $h$ is the unit of molar concentration.
+
+$\log(10 kg) = \log(10) + \log(kg)$ doesn't make sense.
 
 
 ### From dimensions to signatures
