@@ -1,0 +1,203 @@
+{
+  "main": {
+    "id": "0ae81c20baf9d5a2",
+    "type": "split",
+    "children": [
+      {
+        "id": "c832070176aa6380",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ec22f85bd28fdfc9",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "f9c645d4b5a0aa0e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "194cb0d5d5a31ed2",
+            "type": "leaf",
+            "state": {
+              "type": "reveal-preview-view",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c141eed6e09e3599",
+    "type": "split",
+    "children": [
+      {
+        "id": "69aab2c1c2fcfa27",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a1f412a98f0dcbdf",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "68725999a77893e7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "1f580663890779eb",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "61e37dc4589af1ff",
+    "type": "split",
+    "children": [
+      {
+        "id": "602eb6ecb7968991",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "109a0ac11437e88d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "238b2379695c258f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "65ff5f734e15a457",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "8ddb4496058f262a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-advanced-slides:Show Slide Preview": false
+    }
+  },
+  "active": "ec22f85bd28fdfc9",
+  "lastOpenFiles": [
+    "2023_dsai.md",
+    "XAI talk.md",
+    "2023_xai.md",
+    "PrO-AI pitch.md",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "dsai23.md",
+    "export/dsai23.zip",
+    "export/dsai23/plugin/chalkboard/README.md",
+    "export/dsai23/plugin/chalkboard/_style.css",
+    "export/dsai23/plugin/chalkboard/img/blackboard.png",
+    "export/dsai23/plugin/chalkboard/img/boardmarker-black.png",
+    "export/dsai23/plugin/chalkboard/img/boardmarker-blue.png",
+    "export/dsai23/plugin/chalkboard/img/boardmarker-green.png",
+    "export/dsai23/plugin/chalkboard/img/boardmarker-orange.png",
+    "export/dsai23/plugin/chalkboard/img/boardmarker-purple.png",
+    "export/dsai23/plugin/chalkboard/img/boardmarker-red.png",
+    "export/dsai23/plugin/chalkboard/img/boardmarker-yellow.png",
+    "export/dsai23/plugin/chalkboard/img/chalk-blue.png",
+    "export/dsai23/plugin/chalkboard/img/chalk-green.png",
+    "export/dsai23/plugin/chalkboard/img",
+    "export/dsai23/plugin/chalkboard/style.css",
+    "export/dsai23/plugin/chalkboard/plugin.js",
+    "export/dsai23/plugin/chalkboard/plugin (copy).js",
+    "export/dsai23/plugin/chalkboard",
+    "export/dsai23/plugin/chart/README.md",
+    "export/dsai23/plugin/chart/chart.min.js",
+    "export/dsai23/plugin/chart/plugin.js",
+    "export/dsai23/plugin/chart",
+    "export/dsai23/plugin/customcontrols/README.md",
+    "export/dsai23/plugin/menu/CONTRIBUTING.md",
+    "export/dsai23/plugin/menu/README.md",
+    "DSAI23.md",
+    "XAI talk copy.md",
+    "export/XAI23/plugin/customcontrols/README.md",
+    "export/XAI23/plugin/menu/README.md",
+    "export/XAI23/plugin/menu/CONTRIBUTING.md",
+    "export/XAI23/plugin/chart/README.md",
+    "export/XAI23/plugin/chalkboard/README.md",
+    "export/XAI talk/plugin/chalkboard/README.md",
+    "export/XAI talk/plugin/chart/README.md",
+    "export/XAI talk/plugin/customcontrols/README.md",
+    "export/XAI talk/plugin/menu/CONTRIBUTING.md",
+    "export/XAI talk/plugin/menu/README.md"
+  ]
+}
