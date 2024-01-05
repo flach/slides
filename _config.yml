@@ -12,4 +12,5 @@ style: "pf"
 # Build settings
 markdown: kramdown
 exclude: 
-  - Obsidian
+  - Obsidian/2023_xai.md
+  - Obsidian/2023_dsai.md
