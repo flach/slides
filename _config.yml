@@ -11,3 +11,5 @@ style: "pf"
 
 # Build settings
 markdown: kramdown
+exclude: 
+  - Obsidian
