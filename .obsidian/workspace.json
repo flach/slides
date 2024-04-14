@@ -13,24 +13,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/2023_dsai.md",
+                "file": "2024_npl/MD/All.md",
                 "mode": "source",
                 "source": false
               }
             }
-          }
-        ]
-      },
-      {
-        "id": "c7bc1f5aea69bc47",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "2da6f033af3cb4ad",
+            "id": "8e07b0feb4723e1c",
             "type": "leaf",
             "state": {
-              "type": "reveal-preview-view",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "2022_ecir/MD/All.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -99,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Obsidian/2023_dsai.md",
+                "file": "2024_npl/MD/All.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Obsidian/2023_dsai.md",
+                "file": "2024_npl/MD/All.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Obsidian/2023_dsai.md"
+                "file": "2024_npl/MD/All.md"
               }
             }
           }
@@ -163,6 +161,29 @@
   },
   "active": "9732735b6847e729",
   "lastOpenFiles": [
+    "2022_ecir/MD/All.md",
+    "2024_npl/MD/All.md",
+    "_site/2024_npl/img/fig3-right.png",
+    "_site/2024_npl/img/fig3-right.pdf",
+    "_site/2024_npl/img/fig3-left.png",
+    "_site/2024_npl/img/fig3-left.pdf",
+    "2024_npl/img/fig3-right.png",
+    "2024_npl/img/fig3-right.pdf",
+    "2024_npl/img/fig3-left.png",
+    "2024_npl/img/fig3-left.pdf",
+    "2024_npl/img/PRG2-fig-ROC1.png",
+    "2024_npl/img/PRG2-fig-ROC1.pdf",
+    "2024_npl/img/PRG2-fig-ExROC.png",
+    "2024_npl/img/PRG2-fig-ExROC.pdf",
+    "2024_npl/img/PRG2-fig-AUPRG2.png",
+    "2024_npl/img/PRG2-fig-AUPRG2.pdf",
+    "2022_ecir/img/PRG2-fig-ROC1.png",
+    "_site/2024_npl/img/PRG2-fig-scratchExwPRG-right.png",
+    "_site/2024_npl/img/PRG2-fig-scratchExwPRG-right.pdf",
+    "_site/2024_npl/img/PRG2-fig-scratchExwPRG-left.png",
+    "_site/2024_npl/img/PRG2-fig-scratchExwPRG-left.pdf",
+    "_site/2024_npl/img/PRG2-fig-ROC1.pdf",
+    "Obsidian/2023_dsai.md",
     "Obsidian/2023_xai.md"
   ]
 }
