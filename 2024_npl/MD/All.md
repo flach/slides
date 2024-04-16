@@ -10,7 +10,7 @@
 ### ...or is it? 
 
 - If we re-ran these contests, what *distribution of wins and losses* would we expect? 
-- What does *accurately predicts protein structures* mean? 
+- What does *accurately predicting protein structures* mean? 
 - How do we measure *human-likeness of text*? 
 - Does the AI system convey a *degree of confidence* with its outputs? 
 - Can it *explain its reasoning*, and take corrections or feedback into account? 
@@ -21,28 +21,28 @@
 - Starts with informally described goals: accuracy, fairness, interpretability. 
 - Translated into precise objectives, e.g. in terms of confusion matrix. 
 - Requires some kind of measurement protocol, e.g. cross-validation. 
-- Still a long way away from what we really want: assessment of unobservables, causal explanations. 
+- Still a long way away from what we really want: assessment of unobservables, causal explanations (more about that later).
 
 
 ### Performance evaluation in AI (2)
 
 Perhaps surprisingly, a definitive account of key measurement concepts such as scales, units, and dimensions is still missing. 
-
-*Stevens' typology* (nominal, ordinal, interval, ratio) is well-known but limited: e.g., it doesn't cover scales bounded from both sides (probabilities!). 
-
-In physics, quantities are understood to have an associated *dimension*, but these can cancel (angles, percentages) and don't allow for transcendental functions (logs). 
+- *Stevens' typology* (nominal, ordinal, interval, ratio) is well-known but limited: e.g., it doesn't cover scales bounded from both sides (probabilities!). 
+- In physics, quantities are understood to have an associated *dimension*, but 
+	- these can cancel (angles, percentages); 
+	- dimensionless quantities are required for transcendental functions (e.g., logs). 
 
 
 ### Performance evaluation in AI (3)
 
-These issues notwithstanding, performance evaluation in AI (particularly machine learing) is often formulaic and simplistic. 
+Compounding these issues, performance evaluation in AI (particularly machine learning) is often formulaic and simplistic. 
 
 Including every performance indicator you can think of may make the **big table** look impressive, but doesn't necessarily exude confidence that you know what you're doing. 
 
-Indicators such as accuracy (for classification), AUC (for ranking), Brier score (for probability estimation) should really be thought of as different 'dimensions' as in physics. What is your use case?
+Indicators such as accuracy (for classification), AUC (for ranking), Brier score (for probability estimation) should really be thought of as different 'dimensions' as in physics, reflecting the *use case*.
 
 
-### How physicists do measurement
+## How physicists do measurement
 
 - Physical quantities have an associated **dimension** [(Fourier, 1822)](https://books.google.co.uk/books?id=No8IAAAAMAAJ&pg=PA128#v=onepage&q&f=false).
 - In order to be compared and added or subtracted, quantities need to be *commensurable* (have the same dimension).
@@ -98,6 +98,7 @@ Measurements are relevant in machine learning and AI for at least two reasons:
 - *Features* often are measurements on some scale, which dictates admissible statistics and operations.
   - E.g., taking the expectation assumes a linear scale.
 - *Performance metrics* are also measurements, and hence the same applies. 
+	- We'll look at a case where this matters: ROC curves vs. precision-recall curves.
 
 <!--[This project](https://www.turing.ac.uk/research/research-projects/measurement-theory-data-science-and-ai) looked at foundational issues, of which there are many! -->
 
@@ -146,7 +147,7 @@ Slopes of ROCCH segments are empirical likelihood ratios associated with score i
 If a perfectly calibrated classifier assigns score ${\color{red}c}$ to an instance, then the instance is on the decision boundary for 
 $acc_{\color{red}c} = 2{\color{red}c}\pi tpr + 2{\color{red}c}(1-\pi) fpr$. 
 
-[Song et al. Classifier Calibration: How to assess and improve predicted class probabilities: a survey. arXiv](https://arxiv.org/abs/2112.10327)
+[Silva Filho et al. Classifier calibration: a survey on how to assess and improve predicted class probabilities. MLj 112, 2023](https://link.springer.com/article/10.1007/s10994-023-06336-7)
 
 
 ### From ROC plots to PR plots
@@ -154,7 +155,7 @@ $acc_{\color{red}c} = 2{\color{red}c}\pi tpr + 2{\color{red}c}(1-\pi) fpr$.
 ![ROC curve](img/fig1-left.png) <!-- .element height="40%" width="40%" -->
 ![PR curve](img/fig1-right.png) <!-- .element height="40%" width="40%" -->
 
-There is a point-to-point correspondence between ROC space and PR space. 
+There is a point-to-point correspondence between ROC space and precision-recall space. 
 
 
 ### Why PR plots aren't great
@@ -171,7 +172,7 @@ There is a point-to-point correspondence between ROC space and PR space.
 ![PR curve](img/fig2-left.png) <!-- .element height="40%" width="40%" -->
 ![PRG curve](img/fig2-right.png) <!-- .element height="40%" width="40%" -->
 
-[Flach and Kull. Precision-recall-gain curves: PR analysis done right. NIPS 2015.](http://people.cs.bris.ac.uk/~flach/PRGcurves)
+[Flach and Kull. Precision-recall-gain curves: PR analysis done right. NeurIPS 2015.](http://people.cs.bris.ac.uk/~flach/PRGcurves)
 
 
 ### Why PRG plots are great
@@ -218,9 +219,9 @@ Right: scores calibrated for $F_{\beta}$.
 ----
 
 
-## How to build on this in machine learning and AI?
+## Towards ML metrology
 
-- Both perspectives (levels of measurement and dimensional analysis) have interesting features but appear overly focused on establishing a 'true' scale type or dimension for a measurement.
+- Both Stevens' levels of measurement and dimensional analysis have interesting features but appear overly focused on establishing a 'true' scale type or dimension for a measurement.
   - Machine learning needs something more *flexible*.
   - In particular, a better treatment of "dimensionless" quantities which are everywhere you look!
     - relative frequencies, probabilities, evaluation metrics...
@@ -246,7 +247,7 @@ Right: scores calibrated for $F_{\beta}$.
 [![Scoring rules](img/genEntropy.png)  <!-- .element height="70%" width="70%" -->](https://replit.com/@flach/KeyBewitchedRoute)
 
 
-### You can't always measure what you want...
+## You can't always measure what you want...
 
 - Psychologists have long understood that people's abilities (and the difficulty of a task) are *not directly observable* and need to be estimated.
   - **Item-response theory**, factor analysis
@@ -300,16 +301,8 @@ Use a trained IRT model to evaluate a new classifier on a small number of datase
 
 - [Song, H. and Flach, P., 2020. Efficient and Robust Model Benchmarks with Item Response Theory and Adaptive Testing. Int J Interactive Multimedia and AI 2021.](https://ijimai.org/journal/bibcite/reference/2901)
 
-----
 
-## Artificial Intelligence, Measured for Safety
-
-
-### blah
-
-----
-
-## Outlook
+## Asking Why
 
 Ultimately, empirical ML needs to make *causal* statements:
 
@@ -318,8 +311,18 @@ Ultimately, empirical ML needs to make *causal* statements:
 - I.e., with re-balanced classes (counterfactual intervention) the difference in performance would disappear.    <!-- .element: class="fragment" -->
   - NB. In empirical ML we can actually carry out interventions, which makes causal inference a whole lot easier!   <!-- .element: class="fragment" -->
 
+----
 
-## Concluding remarks
+## Artificial Intelligence, Measured for Safety
+
+My current research explores the following objectives: 
+1. Establish a catalogue of *AI capabilities* that can be tested and benchmarked.
+2. Develop *measurement instruments* involving latent capabilities, explanatory inference, and confidence metrics.
+3. Ensure AI measurement validity by exploiting parallels with *educational and psychological measurement*.
+4. Develop AI assurance *tools and benchmarks* and validate them on practical use cases.
+
+
+### Take-home messages
 
 Proper treatment of performance evaluation in machine learning and AI requires a sophisticated **measurement framework** with the following components:
 - *Coherent types and meta-data* for the observable performance indicators;
