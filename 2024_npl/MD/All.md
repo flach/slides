@@ -90,6 +90,17 @@ Transcendental functions ($\exp$, $\log$, $\sin$ etc.) require dimensionless and
 
 $\log(10 kg) = \log(10) + \log(kg)$ doesn't make sense.
 
+
+### Not all dimensionless quantities are equal...
+
+If $p$, $q$ and $r$ are probabilities, only some of the following make sense: 
+- $p=q\cdot r$ <!-- .element: class="fragment" -->
+- $\log p = q \cdot r$ <!-- .element: class="fragment" -->
+- $p\cdot \log q$ <!-- .element: class="fragment" -->
+- $r > p\cdot \log q$ <!-- .element: class="fragment" -->
+
+ML and statistics are not physics! <!-- .element: class="fragment" -->
+
 ----
 
 ## ML measurement in practice
@@ -147,7 +158,7 @@ Slopes of ROCCH segments are empirical likelihood ratios associated with score i
 If a perfectly calibrated classifier assigns score ${\color{red}c}$ to an instance, then the instance is on the decision boundary for 
 $acc_{\color{red}c} = 2{\color{red}c}\pi tpr + 2{\color{red}c}(1-\pi) fpr$. 
 
-[Silva Filho et al. Classifier calibration: a survey on how to assess and improve predicted class probabilities. MLj 112, 2023](https://link.springer.com/article/10.1007/s10994-023-06336-7)
+[Silva Filho et al. Classifier calibration: a survey on how to assess and improve predicted class probabilities. MLj 112, 2023.](https://link.springer.com/article/10.1007/s10994-023-06336-7)
 
 
 ### From ROC plots to PR plots
