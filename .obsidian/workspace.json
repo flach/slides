@@ -4,31 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "772d6b9b7c65d4cd",
+        "id": "c90e7d93e7af565f",
         "type": "tabs",
         "children": [
           {
-            "id": "9732735b6847e729",
+            "id": "5aa55474f717e504",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2024_npl/MD/All.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8e07b0feb4723e1c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2022_ecir/MD/All.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -97,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024_npl/MD/All.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024_npl/MD/All.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "2024_npl/MD/All.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -159,10 +139,10 @@
       "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "9732735b6847e729",
+  "active": "5aa55474f717e504",
   "lastOpenFiles": [
-    "2022_ecir/MD/All.md",
     "2024_npl/MD/All.md",
+    "2022_ecir/MD/All.md",
     "_site/2024_npl/img/fig3-right.png",
     "_site/2024_npl/img/fig3-right.pdf",
     "_site/2024_npl/img/fig3-left.png",
