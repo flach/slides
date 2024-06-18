@@ -33,9 +33,11 @@ These are very familiar questions for a data scientist! <!-- .element: class="fr
 
 ### How data science can help
 
-- Confidence calibration, abstention
-- Explanatory reasoning
-- Performance evaluation
+- Confidence calibration, abstention <!-- .element: class="fragment" -->
+- Explanatory reasoning <!-- .element: class="fragment" -->
+- Performance evaluation <!-- .element: class="fragment" -->
+
+But first, let's have a quick look at ChatGPT and generative AI. <!-- .element: class="fragment" -->
 
 ----
 
@@ -81,7 +83,7 @@ These are very familiar questions for a data scientist! <!-- .element: class="fr
 [Stephen Wolfram: What Is ChatGPT Doing ... and Why Does It Work?](https://writings.stephenwolfram.com/2023/02/what-is-ChatGPT-doing-and-why-does-it-work/)
 
 
-### The ultimate psychedelic
+### AI on acid? 
 
 Putting linguistic elements together in surprising and potentially novel ways is the essence of language. 
 
@@ -116,7 +118,7 @@ Optimal decisions can **only** be made with calibrated probabilities.
 
 ![Betacal](img/betacal.jpg) <!-- .element height="50%" width="50%" -->
 
-[Classifier calibration survey](https://link.springer.com/article/10.1007/s10994-023-06336-7) <!-- .element: class="fragment" -->
+[Classifier calibration survey](https://link.springer.com/article/10.1007/s10994-023-06336-7) 
 
 
 ### Computer says 'I Don't Know'
