@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5aa55474f717e504",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2024_sks/MD/All.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "3575bd464d901155",
             "type": "leaf",
             "state": {
@@ -41,6 +29,21 @@
                 "mode": "source",
                 "source": false
               }
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "eacf4aa974ee7d9b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c096a8dd027f4766",
+            "type": "leaf",
+            "state": {
+              "type": "reveal-preview-view",
+              "state": {}
             }
           }
         ]
@@ -109,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2024_sks/MD/All.md",
+                "file": "Obsidian/2023_xai.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +129,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2024_sks/MD/All.md",
+                "file": "Obsidian/2023_xai.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2024_sks/MD/All.md"
+                "file": "Obsidian/2023_xai.md"
               }
             }
           }
@@ -171,8 +174,11 @@
       "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "5aa55474f717e504",
+  "active": "7b2d84b878bf5636",
   "lastOpenFiles": [
+    "2024_sks/MD/All.md",
+    "Obsidian/2023_xai.md",
+    "2024_npl/MD/All.md",
     "_site/2024_sks/img/PRG.png",
     "2024_sks/img/PRG.png",
     "_site/2024_sks/img/fig3-right.png",
@@ -183,10 +189,6 @@
     "_site/2024_sks/img/PRG2-fig-ExROC.png",
     "2024_sks/img/PRG2-fig-ROC1.png",
     "2024_sks/img/PRG2-fig-ExROC.png",
-    "_site/2024_sks/img/fig2-right.png",
-    "2024_npl/MD/All.md",
-    "2024_sks/MD/All.md",
-    "Obsidian/2023_xai.md",
     "2022_ecir/MD/All.md",
     "_site/2024_npl/img/fig3-right.pdf",
     "_site/2024_npl/img/fig3-left.pdf",
