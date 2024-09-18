@@ -13,6 +13,10 @@
 <center>![CRISP-DM evolution](img/EvolutionKDD.svg) <!-- .element height="75%" width="75%" --></center>
 <small>Adapted from G.  Mariscal,  O.  Marban,  and  C.  Fernandez: A  survey  of  datamining and knowledge discovery process models and methodologies, Knowledge Engineering Review 25(2):137-166, 2010.</small>
 
+*
+*
+*
+
 
 ### Data takes centre stage
 
@@ -61,6 +65,10 @@ Such a prospecting process is fundamentally **exploratory** and can include some
 - *Modelling*: train a recommender system
 - *Product Exploration*: explore most appropriate end-user product/presentation	
 
+*
+*
+*
+
 
 ## More DST Trajectories
 
@@ -93,7 +101,6 @@ Such a prospecting process is fundamentally **exploratory** and can include some
 ### Insurance profiling
 
 <center>![Ex_Insurance_CustomerProfiling](img/Ex_Insurance_CustomerProfiling.pdf) <!-- .element height="100%" width="100%" --></center>
-
 
 *
 *
