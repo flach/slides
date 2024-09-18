@@ -29,7 +29,7 @@
 
     <div class="reveal" style="margin-top: -50px; padding-top: 50px;">
       <div style="position: absolute; bottom: 1em; width: 100%; font-size: 0.4em; text-align: center;">
-        {{ page.title }} | {{ site.author }}{% if page.affiliation %}&nbsp;{{ page.affiliation }}{% elsif site.affiliation %}&nbsp;{{ site.affiliation }}{% endif %}{% if page.footernote %}&nbsp;|&nbsp;{{ page.footernote }}{% elsif site.footernote %}&nbsp;|&nbsp;{{ site.footernote }}{% endif %}
+        {{ page.title }} | {{ site.author }}{% if page.affiliation %},&nbsp;{{ page.affiliation }}{% elsif site.affiliation %},&nbsp;{{ site.affiliation }}{% endif %}{% if page.footernote %}&nbsp;|&nbsp;{{ page.footernote }}{% elsif site.footernote %}&nbsp;|&nbsp;{{ site.footernote }}{% endif %}
       </div>
       <div class="slides">
 
@@ -38,7 +38,7 @@
     {% if page.coverimage %}<img src="{{ page.coverimage }}" height="200" align="right">{% endif %}
     {% if page.subtitle %}<h3>{{ page.subtitle }}</h3>{% endif %}
     {% if site.author %}
-    <h4>{{ site.author }}{% if page.affiliation %}&nbsp;{{ page.affiliation }}{% elsif site.affiliation %}&nbsp;{{ site.affiliation }}{% endif %}</h4>
+    <h4>{{ site.author }}{% if page.affiliation %}</p>{{ page.affiliation }}{% elsif site.affiliation %}</p>{{ site.affiliation }}{% endif %}</h4>
     {% endif %}
     {% if page.subdir %}
     	<a href="{{ site.website }}{{ site.baseurl }}{{ page.subdir }}">{{ site.website }}{{ site.baseurl }}{{ page.subdir }}</a>
