@@ -32,21 +32,19 @@ Data Science is a family of *disciplines operating at the junction of data and k
 
 <center>![DS-Venn](img/DS-Venn.svg) <!-- .element height="50%" width="50%" --></center>
 
-
-
 *
 *
 *
 
 
-## Data Mining: the origin of Data Science
+## Back to the roots: Data Mining
 
 > the overall process of knowledge discovery from data, including how the data is stored and accessed, how algorithms can be scaled to massive datasets and still run efficiently, how results can be interpreted and visualised, and how the overall human-machine interaction can be modeled and supported
 
 U. Fayyad, G. Piatetsky-Shapiro and P. Smyth, "The KDD process for extracting useful knowledge from volumes of data", Commun. ACM, vol. 39, no. 11, pp. 27-34, Nov. 1996.
 
 
-### CRoss-Industry Standard Process for Data Mining
+### CRoss-Industry Standard Process for DM
 
 > CRISP-DM was conceived in late 1996 by three "veterans" of the young and immature data mining market. DaimlerChrysler (then Daimler-Benz) was already experienced ... in applying data mining in its business operations. SPSS (then ISL) ... had launched the first commercial data mining workbench - Clementine - in 1994. NCR ... had established teams of data mining consultants and technology specialists to service its clients' requirements.
 
@@ -74,7 +72,7 @@ P. Chapman (2000). CRISP-DM 1.0: Step-by-step data mining guide.
 <small>Adapted from G.  Mariscal,  O.  Marban,  and  C.  Fernandez: A  survey  of  datamining and knowledge discovery process models and methodologies, Knowledge Engineering Review 25(2):137-166, 2010.</small>
 
 
-## The process view is goal-oriented
+### The process view is goal-oriented
 
 CRISP-DM is about processes and different tasks and roles within those processes. 
 
@@ -162,11 +160,11 @@ Such a prospecting process is fundamentally **exploratory** and can include some
 
 ### Car insurance
 
-<center>![Ex_Insurance_CustomerProfiling](img/Ex_Insurance_CustomerProfiling.svg) <!-- .element height="50%" width="50%" --></center>
+<center>![Ex_Insurance_CustomerProfiling](img/Ex_Insurance_CustomerProfiling.svg) <!-- .element height="45%" width="45%" --></center>
 
 CRISP-DM plus additional stages: 
-- how best to extract value from this data (e.g., develop new products and services); 
-- additional data sources to create more detailed risk assessments. 
+- *data value exploration*: e.g., develop new products and services; 
+- *data source exploration*: e.g., create more detailed risk assessments. 
 
 
 ### Sales OLAP
