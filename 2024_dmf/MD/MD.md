@@ -245,4 +245,4 @@ This creates uncertainty for project management, which DST mitigates in a variet
 
 ## Thanks for listening! 
 
-<center>![Trajectory](img/DSspace:BBVA.svg) <!-- .element height="75%" width="100%" --></center>
+<center>![Trajectory](img/DSspace:BBVA.svg) <!-- .element height="50%" width="50%" --></center>
