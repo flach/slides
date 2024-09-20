@@ -1,4 +1,45 @@
-## Data Mining, aka KDD
+## What is Data Science? 
+
+- <!-- .element: class="fragment" --> The Science *of* Data? 
+  - <!-- .element: class="fragment" --> machine learning & statistics research
+- <!-- .element: class="fragment" --> Doing Science *with* Data?
+  - <!-- .element: class="fragment" --> data-intensive research
+- <!-- .element: class="fragment" --> Applying Science *to* Data?
+  - <!-- .element: class="fragment" --> data-intensive $X$
+
+
+### Data and Knowledge
+
+*Data* provides factual information about events, situations, circumstances etc. in the world around us. 
+It is a vehicle for **describing** the world as it appears. 
+
+*Knowledge* is the carrier of **understanding**: 
+- (K in) Domain knowledge is indispensable for processing and exploiting the data in a productive way. 
+- (K out) Further knowledge is produced by applying analytics to data.
+
+
+### Data + Knowledge = Value
+
+Data Science is a family of *disciplines operating at the junction of data and knowledge*, building on rich data and domain knowledge to produce **value** in a variety of forms: 
+- scientific knowledge and models
+- societal value
+- economic value
+- personal value
+- ...
+
+
+### Data Science Activities
+
+<center>![DS-Venn](img/DS-Venn.svg) <!-- .element height="50%" width="50%" --></center>
+
+
+
+*
+*
+*
+
+
+## Data Mining: the origin of Data Science
 
 > the overall process of knowledge discovery from data, including how the data is stored and accessed, how algorithms can be scaled to massive datasets and still run efficiently, how results can be interpreted and visualised, and how the overall human-machine interaction can be modeled and supported
 
@@ -33,7 +74,7 @@ P. Chapman (2000). CRISP-DM 1.0: Step-by-step data mining guide.
 <small>Adapted from G.  Mariscal,  O.  Marban,  and  C.  Fernandez: A  survey  of  datamining and knowledge discovery process models and methodologies, Knowledge Engineering Review 25(2):137-166, 2010.</small>
 
 
-### The process view is goal-oriented
+## The process view is goal-oriented
 
 CRISP-DM is about processes and different tasks and roles within those processes. 
 
@@ -103,47 +144,84 @@ Such a prospecting process is fundamentally **exploratory** and can include some
 
 ## More DST Trajectories
 
+- [Pollution simulator](#/4/1)
+- [Car insurance](#/4/2)
+- [Sales OLAP](#/4/3)
+- [Data publishing](#/4/4)
+- [Smart parking](#/4/5)
+- [Payment geovisualisation](#/4/6)
+
 
 ### Pollution simulator
 
 <center>![Ex_Simulation](img/Ex_Simulation.svg) <!-- .element height="100%" width="100%" --></center>
 
+- Integration of traffic simulation models with meteorological data; 
+- Exploring the most appropriate end-user presentation. 
 
-### Drivers profiling
 
-<center>![Ex_Insurance_CustomerProfiling](img/Ex_Insurance_CustomerProfiling.svg) <!-- .element height="100%" width="100%" --></center>
+### Car insurance
+
+<center>![Ex_Insurance_CustomerProfiling](img/Ex_Insurance_CustomerProfiling.svg) <!-- .element height="50%" width="50%" --></center>
+
+CRISP-DM plus additional stages: 
+- how best to extract value from this data (e.g., develop new products and services); 
+- additional data sources to create more detailed risk assessments. 
 
 
 ### Sales OLAP
 
 <center>![EX_OLAP](img/EX_OLAP.svg) <!-- .element height="100%" width="100%" --></center>
 
+Here, OLAP (Online Analytical Processing) tools such as drill-down and roll-up are applied instead of predictive modelling to visualise key business issues in a data warehouse. 
 
-### Repository publishing
+
+### Data publishing
 
 <center>![Ex_DataProduct](img/Ex_DataProduct.svg) <!-- .element height="100%" width="100%" --></center>
+
+- *data source exploration* in case of external data;  
+- *data acquisition* where the required data is downloaded, scraped and explored; 
+- *data preparation* where data is parsed and structured; 
+- *data architecting* where data is annotated and managed;  
+- *data release* where both data and extraction pipelines are shared for public use.
 
 
 ### Smart parking
 
 <center>![Ex_smart_parking_Dubrovnik](img/Ex_smart_parking_Dubrovnik.svg) <!-- .element height="100%" width="100%" --></center>
 
+- *data source exploration* to determine suitable data;  
+- *data acquisition*, e.g. through sensors or cameras; 
+- *data preparation* to determine free parking spots; 
+- *product exploration* to determine the best end-user presentation (e.g., web and/or app).
+
 
 ### Payment geovisualisation
 
 <center>![Ex_BBVA_tourism_spending](img/Ex_BBVA_tourism_spending.svg) <!-- .element height="100%" width="100%" --></center>
 
+- *data value exploration* where the bank systematically looked through the data it held; 
+- *goal exploration* where the bank chose to do an interactive website; 
+- *result exploration* to decide which parts of the data could be monetised; 
+- *narrative exploration*: e.g., "Ever wondered when the French buy their food?"
 
-## Activity types
 
-<center>![Activities](img/Activities.png) <!-- .element height="60%" width="60%" --></center>
+## Mapping back to activities
+
+<center>![Activities](img/Activities.png) <!-- .element height="50%" width="50%" --></center>
 
 
 ### Big Data use cases
 
-<center>![NIST-Use-Cases](img/NIST-Use-Cases.png) <!-- .element height="50%" width="50%" --></center>
+<center>![NIST-Use-Cases](img/NIST-Use-Cases.png) <!-- .element height="40%" width="40%" --></center>
 
 W. L. Chang and G. Fox, "NIST big data interoperability framework: Volume 3 use cases and general requirements", 2015.
+
+
+### Further reading
+
+<center>![TKDE](img/TKDE.png) <!-- .element height="100%" width="100%" --></center>
 
 *
 *
