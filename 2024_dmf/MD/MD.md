@@ -28,7 +28,7 @@ Data Science is a family of *disciplines operating at the junction of data and k
 - ...
 
 
-### Data Science Activities
+### Data Science Activity Types
 
 <center>![DS-Venn](img/DS-Venn.svg) <!-- .element height="50%" width="50%" --></center>
 
@@ -205,7 +205,7 @@ Here, OLAP (Online Analytical Processing) tools such as drill-down and roll-up a
 - *narrative exploration*: e.g., "Ever wondered when the French buy their food?"
 
 
-## Mapping back to activities
+## Mapping back to activity types
 
 <center>![Activities](img/Activities.png) <!-- .element height="50%" width="50%" --></center>
 
