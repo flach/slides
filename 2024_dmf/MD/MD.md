@@ -226,6 +226,23 @@ W. L. Chang and G. Fox, "NIST big data interoperability framework: Volume 3 use 
 *
 
 
-## Discussion
+## Concluding remarks
 
-TO DO
+CRISP-DM bears similarity to software engineering methodologies with an accepted series of phases but no fixed way series of steps through them. 
+
+DST captures the additional complexity in Data Science of having a much richer set of activities, not all of which are relevant for every DS project. 
+
+This creates uncertainty for project management, which DST mitigates in a variety of ways. 
+
+
+### How DST helps DS project management
+
+1. DST activities are systematically enumerated and hence reasonably comprehensive. <!-- .element: class="fragment" --> 
+2. A library of previous trajectories provides templates for new projects. <!-- .element: class="fragment" --> 
+3. DST trajectories facilitate project planning: e.g., activities can be assigned personnel and budgets, and transitions function as milestones. <!-- .element: class="fragment" --> 
+4. DST encourages techniques from workflow inference and management, collection of statistics, etc. <!-- .element: class="fragment" --> 
+
+
+## Thanks for listening! 
+
+<center>![Trajectory](img/DSspace:BBVA.svg) <!-- .element height="75%" width="100%" --></center>
