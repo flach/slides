@@ -13,4 +13,5 @@ style: "pf"
 markdown: kramdown
 exclude: 
   - Obsidian/2023_xai.md
-  - Obsidian/2023_dsai.md
+  - Obsidian/2023_dsai.md  
+  - Obsidian/2024_porto.md
