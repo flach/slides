@@ -14,8 +14,7 @@ vvv
 1) Setting the scene
 2) Explainability for time series
 3) Actionable counterfactuals
-4) XAI toolboxes
-5) Explainability fact sheets
+4) XAI tools
 6) Multi-class explanations
 ---
 # Setting the scene 
@@ -181,11 +180,11 @@ Torty Sivill
 Rafael Poyiadzi
 </grid>
 <grid drag="80 30" drop="10 60" flow="row" align="stretch">
-Raul Santos-Rodriguez
-
 Paul-Gauthier Noé
 
 Miquel Perelló Nieto
+
+Raul Santos-Rodriguez
 </grid>
 <grid drag="80 40" drop="10 15" flow="row" align="stretch">
 ![[KS.jpg]] <!-- .element: class="fragment"-->
@@ -193,7 +192,7 @@ Miquel Perelló Nieto
 ![[RP.jpg]] <!-- .element: class="fragment"-->
 </grid>
 <grid drag="80 40" drop="10 53" flow="row" align="stretch">
-![[RSR.jpg]] <!-- .element: class="fragment"-->
 ![[PGN.jpg]] <!-- .element: class="fragment"-->
 ![[MPN.jpg]] <!-- .element: class="fragment"-->
+![[RSR.jpg]] <!-- .element: class="fragment"-->
 </grid>
