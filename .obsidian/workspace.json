@@ -24,11 +24,11 @@
         ]
       },
       {
-        "id": "00d98541bec4bfe5",
+        "id": "cefe9f05658dc496",
         "type": "tabs",
         "children": [
           {
-            "id": "6754c0d700ce6748",
+            "id": "e0f976bd7010656c",
             "type": "leaf",
             "state": {
               "type": "reveal-preview-view",
@@ -179,7 +179,7 @@
       "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "6754c0d700ce6748",
+  "active": "6f9d02aaa5dfefaf",
   "lastOpenFiles": [
     "export/2024_porto/plugin/chalkboard/README.md",
     "export/2024_porto/plugin/chalkboard/_style.css",

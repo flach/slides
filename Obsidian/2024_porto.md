@@ -5,10 +5,13 @@ timeForPresentation: 2700
 ---
  <!-- slide bg="[[PeterCartoon-square.jpg]]" data-background-opacity="0.2"-->
 # Explainable AI, explained
-<br><br>
-<br><br><br>
+<br></br>
+<br></br>
+<br></br>
 
 ### Peter Flach, University of Bristol
+<br></br>
+https://flach.github.io/slides
 vvv
 ## Outline
 1) Setting the scene
