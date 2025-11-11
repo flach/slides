@@ -62,11 +62,13 @@ P. Chapman (2000). CRISP-DM 1.0: Step-by-step data mining guide.
 <small>Adapted from G.  Mariscal,  O.  Marban,  and  C.  Fernandez: A  survey  of  datamining and knowledge discovery process models and methodologies, Knowledge Engineering Review 25(2):137-166, 2010.</small>
 
 
-### The process view is goal-oriented
+### The process view is **goal-oriented**
 
 CRISP-DM is about processes and different tasks and roles within those processes. 
 
-Data is an ingredient towards achieving the goal. 
+Data is an ingredient towards achieving the goal, but not more than that. 
+
+In the more exploratory Data Science world we need a methodology that is less prescriptive and *puts the data centre stage*. 
 
 *
 *
@@ -192,7 +194,11 @@ This creates uncertainty for project management, which DST mitigates in a variet
 
 ### How DST relates to AutoML
 
-- 
+AutoML is a process to automatically discover and configure machine learning workflows. 
+
+For that to work in practice we need a language to describe possible workflows and how they are composed of basic building blocks. 
+
+Data Science Trajectories provides a framework for defining such a language and meta-inductive bias. 
 
 
 ## Thanks for listening! 
