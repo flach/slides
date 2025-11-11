@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c90e7d93e7af565f",
+        "id": "6ea299cece3da51d",
         "type": "tabs",
         "children": [
           {
-            "id": "6f9d02aaa5dfefaf",
+            "id": "181420683ce7c936",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -24,11 +24,11 @@
         ]
       },
       {
-        "id": "cefe9f05658dc496",
+        "id": "25a817f4cc1edb66",
         "type": "tabs",
         "children": [
           {
-            "id": "e0f976bd7010656c",
+            "id": "2c535d7be663db66",
             "type": "leaf",
             "state": {
               "type": "reveal-preview-view",
@@ -56,7 +56,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -170,6 +171,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -179,35 +181,37 @@
       "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "6f9d02aaa5dfefaf",
+  "active": "7b2d84b878bf5636",
   "lastOpenFiles": [
+    "2025_recife/MD/All.md",
+    "2025_recife/MD",
+    "2025_recife/_site/img/trophy.jpg",
+    "2025_recife/_site/img/timeslots.jpg",
+    "2025_recife/_site/img/overconfidence.jpg",
+    "2025_recife/_site/img/mansplaining.jpg",
+    "2025_recife/_site/img/kasparov.jpg",
+    "2025_recife/_site/img/finetuning.jpg",
+    "2025_recife/_site/img/chatGPT.jpg",
+    "2025_recife/_site/img/cars.jpg",
+    "2025_recife/_site/img/betacal.jpg",
+    "2025_recife/_site/img/PeterCartoon-square.jpg",
+    "2025_recife/_site/img/8cUcYQ-87c049f3-eee0-4595-b187-952d46566ba5.pdf",
+    "2025_recife/_site/MD/All.md",
+    "2025_recife/_site/index.html",
+    "2025_recife/_site/img",
+    "2025_recife/_site/MD",
+    "2025_recife/_site",
+    "2025_recife/img/8cUcYQ-87c049f3-eee0-4595-b187-952d46566ba5.pdf",
+    "2025_recife/index.html",
+    "2025_recife/img",
+    "2025_recife",
+    "Obsidian/2023_xai.md",
+    "Obsidian/2024_porto.md",
     "export/2024_porto/plugin/chalkboard/README.md",
-    "export/2024_porto/plugin/chalkboard/_style.css",
-    "export/2024_porto/plugin/chalkboard/img/whiteboard.png",
-    "export/2024_porto/plugin/chalkboard/img/sponge.png",
-    "export/2024_porto/plugin/chalkboard/img/chalk-yellow.png",
-    "export/2024_porto/plugin/chalkboard/img/chalk-white.png",
-    "export/2024_porto/plugin/chalkboard/img/chalk-red.png",
-    "export/2024_porto/plugin/chalkboard/img/chalk-purple.png",
-    "export/2024_porto/plugin/chalkboard/img/chalk-orange.png",
-    "export/2024_porto/plugin/chalkboard/img/chalk-green.png",
-    "export/2024_porto/plugin/chalkboard/img/chalk-blue.png",
-    "export/2024_porto/plugin/chalkboard/img/boardmarker-yellow.png",
-    "export/2024_porto/plugin/chalkboard/img",
-    "export/2024_porto/plugin/chalkboard/plugin (copy).js",
-    "export/2024_porto/plugin/chalkboard/plugin.js",
-    "export/2024_porto/plugin/chalkboard/style.css",
-    "export/2024_porto/plugin/chalkboard",
-    "export/2024_porto/plugin/chart/plugin.js",
-    "export/2024_porto/plugin/chart/chart.min.js",
     "export/2024_porto/plugin/chart/README.md",
-    "export/2024_porto/plugin/chart",
-    "export/2024_porto/plugin/customcontrols/style.css",
     "export/2024_porto/plugin/customcontrols/README.md",
     "export/2024_porto/plugin/menu/CONTRIBUTING.md",
     "export/2024_porto/plugin/menu/README.md",
-    "Obsidian/2023_xai.md",
-    "Obsidian/2024_porto.md",
     "Obsidian/export/2024_porto/plugin/menu/README.md",
     "Obsidian/export/2024_porto/plugin/menu/CONTRIBUTING.md",
     "Obsidian/export/2024_porto/plugin/chart/README.md",
