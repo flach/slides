@@ -13,22 +13,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/2024_porto.md",
+                "file": "Obsidian/2024_recife_2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024_porto"
+              "title": "2024_recife_2"
             }
           }
         ]
       },
       {
-        "id": "25a817f4cc1edb66",
+        "id": "c795f7e4be9811df",
         "type": "tabs",
         "children": [
           {
-            "id": "2c535d7be663db66",
+            "id": "8512871bd71e0b19",
             "type": "leaf",
             "state": {
               "type": "reveal-preview-view",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Obsidian/2024_porto.md",
+                "file": "Obsidian/2024_recife_2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +120,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 2024_porto"
+              "title": "Backlinks for 2024_recife_2"
             }
           },
           {
@@ -181,32 +181,43 @@
       "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "7b2d84b878bf5636",
+  "active": "181420683ce7c936",
   "lastOpenFiles": [
-    "2025_recife/MD/All.md",
-    "2025_recife/MD",
-    "2025_recife/_site/img/trophy.jpg",
-    "2025_recife/_site/img/timeslots.jpg",
-    "2025_recife/_site/img/overconfidence.jpg",
-    "2025_recife/_site/img/mansplaining.jpg",
-    "2025_recife/_site/img/kasparov.jpg",
-    "2025_recife/_site/img/finetuning.jpg",
-    "2025_recife/_site/img/chatGPT.jpg",
-    "2025_recife/_site/img/cars.jpg",
-    "2025_recife/_site/img/betacal.jpg",
-    "2025_recife/_site/img/PeterCartoon-square.jpg",
-    "2025_recife/_site/img/8cUcYQ-87c049f3-eee0-4595-b187-952d46566ba5.pdf",
-    "2025_recife/_site/MD/All.md",
-    "2025_recife/_site/index.html",
-    "2025_recife/_site/img",
-    "2025_recife/_site/MD",
-    "2025_recife/_site",
-    "2025_recife/img/8cUcYQ-87c049f3-eee0-4595-b187-952d46566ba5.pdf",
-    "2025_recife/index.html",
-    "2025_recife/img",
-    "2025_recife",
-    "Obsidian/2023_xai.md",
+    "2025_recife_1/MD/template.md",
+    "2025_recife_1/MD/S2.md",
+    "2025_recife_1/MD/S3.md",
+    "2025_recife_1/MD/MD.md",
+    "2025_recife_1/img/TKDE.png",
+    "2025_recife_1/img/TKDE.pdf",
+    "2025_recife_1/img/PeterCartoon-square.jpg",
+    "2025_recife_1/img/NIST-Use-Cases.png",
+    "2025_recife_1/img/Hero.png",
+    "2025_recife_1/img/GT.png",
+    "2025_recife_1/img/GT-old.png",
+    "2025_recife_1/img/Ex_smart_parking_Dubrovnik.svg",
+    "2025_recife_1/img/Ex_smart_parking_Dubrovnik.pdf",
+    "2025_recife_1/img/Ex_TourOperator.svg",
+    "2025_recife_1/img/Ex_TourOperator.pdf",
+    "2025_recife_1/img/Ex_Simulation.svg",
+    "2025_recife_1/img/Ex_Simulation.pdf",
+    "2025_recife_1/img/Ex_Insurance_CustomerProfiling.svg",
+    "2025_recife_1/img/Ex_Insurance_CustomerProfiling.pdf",
+    "2025_recife_1/img/Ex_DataProduct.pdf",
+    "2025_recife_1/img/Ex_BBVA_tourism_spending.pdf",
+    "2025_recife_1/img/EvolutionKDD.pdf",
+    "2025_recife_1/img/EX_OLAP.pdf",
+    "2025_recife_1/img/DSspace_example.pdf",
+    "2024_dmf copy/MD/template.md",
+    "2024_dmf copy/MD/S3.md",
+    "2024_dmf copy/MD/MD.md",
+    "2024_dmf copy/MD/S2.md",
     "Obsidian/2024_porto.md",
+    "Obsidian/2024_recife_2.md",
+    "Obsidian/2024_porto copy.md",
+    "Obsidian/2023_xai.md",
+    "_site/2025_recife/MD/All.md",
+    "2025_recife/MD/All.md",
+    "2025_recife/_site/MD/All.md",
     "export/2024_porto/plugin/chalkboard/README.md",
     "export/2024_porto/plugin/chart/README.md",
     "export/2024_porto/plugin/customcontrols/README.md",
@@ -217,10 +228,6 @@
     "Obsidian/export/2024_porto/plugin/chart/README.md",
     "Obsidian/export/2024_porto/plugin/customcontrols/README.md",
     "Obsidian/export/2024_porto/plugin/chalkboard/README.md",
-    "Obsidian/2023_dsai.md",
-    "Obsidian/figs/Untitled.md",
-    "2024_npl/MD/All.md",
-    "2024_sks/MD/All.md",
-    "2022_ecir/MD/All.md"
+    "Obsidian/2023_dsai.md"
   ]
 }
