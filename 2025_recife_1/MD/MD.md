@@ -1,24 +1,4 @@
-## What is Data Science? 
-
-- <!-- .element: class="fragment" --> The Science *of* Data? 
-  - <!-- .element: class="fragment" --> machine learning & statistics research
-- <!-- .element: class="fragment" --> Doing Science *with* Data?
-  - <!-- .element: class="fragment" --> data-intensive research
-- <!-- .element: class="fragment" --> Applying Science *to* Data?
-  - <!-- .element: class="fragment" --> data-intensive $X$
-
-
-### Data and Knowledge
-
-*Data* provides factual information about events, situations, circumstances etc. in the world around us. 
-It is a vehicle for **describing** the world as it appears. 
-
-*Knowledge* is the carrier of **understanding**: 
-- (K in) Domain knowledge is indispensable for processing and exploiting the data in a productive way. 
-- (K out) Further knowledge is produced by applying analytics to data.
-
-
-### Data + Knowledge = Value
+### Machine Learning is a form of Data Science
 
 Data Science is a family of *disciplines operating at the junction of data and knowledge*, building on rich data and domain knowledge to produce **value** in a variety of forms: 
 - scientific knowledge and models
@@ -26,6 +6,16 @@ Data Science is a family of *disciplines operating at the junction of data and k
 - economic value
 - personal value
 - ...
+
+
+### Data and Knowledge
+
+*Data* provides factual information about events, situations, circumstances etc. that matter to us. 
+It is a vehicle for **describing** relevant parts of the physical or virtual world. 
+
+*Knowledge* is the carrier of **understanding**: 
+- (K in) Domain knowledge is indispensable for processing and exploiting the data in a productive way. 
+- (K out) Further knowledge is produced by applying analytics to data.
 
 
 ### Data Science Activity Types
@@ -68,7 +58,7 @@ P. Chapman (2000). CRISP-DM 1.0: Step-by-step data mining guide.
 
 ### CRISP-DM evolution
 
-<center>![CRISP-DM evolution](img/EvolutionKDD.svg) <!-- .element height="75%" width="75%" --></center>
+<center>![CRISP-DM evolution](img/EvolutionKDD.svg) <!-- .element height="100%" width="100%" --></center>
 <small>Adapted from G.  Mariscal,  O.  Marban,  and  C.  Fernandez: A  survey  of  datamining and knowledge discovery process models and methodologies, Knowledge Engineering Review 25(2):137-166, 2010.</small>
 
 
@@ -92,7 +82,7 @@ Data is an ingredient towards achieving the goal.
 
 Contemporary Data Science *starts from the data*: 
 - We know or suspect there is value in these data, how do we unlock it? 
-- What are the possible operations we can apply to the data to unlock and utilise their value?
+- What are the possible operations we can apply to the data to utilise their value?
 
 While moving away from the process, the methodology becomes less prescriptive and more inquisitive:
 things you **can** do to data rather than things you **should** do to data. 
@@ -115,7 +105,7 @@ Such a prospecting process is fundamentally **exploratory** and can include some
 - *Product exploration*: finding ways to turn the value extracted from the data into a service or app. 
 
 
-### DST space
+### DST space extends CRISP-DM space
 
 <center>![DST space](img/DSspace.svg) <!-- .element height="75%" width="100%" --></center>
 
@@ -140,14 +130,9 @@ Such a prospecting process is fundamentally **exploratory** and can include some
 *
 
 
-## More DST Trajectories
+## Example DST Trajectories
 
-- [Pollution simulator](#/4/1)
-- [Car insurance](#/4/2)
-- [Sales OLAP](#/4/3)
-- [Data publishing](#/4/4)
-- [Smart parking](#/4/5)
-- [Payment geovisualisation](#/4/6)
+<center>![Activities](img/Activities.png) <!-- .element height="50%" width="50%" --></center>
 
 
 ### Pollution simulator
@@ -158,20 +143,14 @@ Such a prospecting process is fundamentally **exploratory** and can include some
 - Exploring the most appropriate end-user presentation. 
 
 
-### Car insurance
+### Payment geovisualisation
 
-<center>![Ex_Insurance_CustomerProfiling](img/Ex_Insurance_CustomerProfiling.svg) <!-- .element height="45%" width="45%" --></center>
+<center>![Ex_BBVA_tourism_spending](img/Ex_BBVA_tourism_spending.svg) <!-- .element height="100%" width="100%" --></center>
 
-CRISP-DM plus additional stages: 
-- *data value exploration*: e.g., develop new products and services; 
-- *data source exploration*: e.g., create more detailed risk assessments. 
-
-
-### Sales OLAP
-
-<center>![EX_OLAP](img/EX_OLAP.svg) <!-- .element height="100%" width="100%" --></center>
-
-Here, OLAP (Online Analytical Processing) tools such as drill-down and roll-up are applied instead of predictive modelling to visualise key business issues in a data warehouse. 
+- *data value exploration* where the bank systematically looked through the data it held; 
+- *goal exploration* where the bank chose to do an interactive website; 
+- *result exploration* to decide which parts of the data could be monetised; 
+- *narrative exploration*: e.g., "Ever wondered when Brazilians buy their food?"
 
 
 ### Data publishing
@@ -185,38 +164,6 @@ Here, OLAP (Online Analytical Processing) tools such as drill-down and roll-up a
 - *data release* where both data and extraction pipelines are shared for public use.
 
 
-### Smart parking
-
-<center>![Ex_smart_parking_Dubrovnik](img/Ex_smart_parking_Dubrovnik.svg) <!-- .element height="100%" width="100%" --></center>
-
-- *data source exploration* to determine suitable data;  
-- *data acquisition*, e.g. through sensors or cameras; 
-- *data preparation* to determine free parking spots; 
-- *product exploration* to determine the best end-user presentation (e.g., web and/or app).
-
-
-### Payment geovisualisation
-
-<center>![Ex_BBVA_tourism_spending](img/Ex_BBVA_tourism_spending.svg) <!-- .element height="100%" width="100%" --></center>
-
-- *data value exploration* where the bank systematically looked through the data it held; 
-- *goal exploration* where the bank chose to do an interactive website; 
-- *result exploration* to decide which parts of the data could be monetised; 
-- *narrative exploration*: e.g., "Ever wondered when the French buy their food?"
-
-
-## Mapping back to activity types
-
-<center>![Activities](img/Activities.png) <!-- .element height="50%" width="50%" --></center>
-
-
-### Big Data use cases
-
-<center>![NIST-Use-Cases](img/NIST-Use-Cases.png) <!-- .element height="40%" width="40%" --></center>
-
-W. L. Chang and G. Fox, "NIST big data interoperability framework: Volume 3 use cases and general requirements", 2015.
-
-
 ### Further reading
 
 <center>![TKDE](img/TKDE.png) <!-- .element height="100%" width="100%" --></center>
@@ -228,7 +175,7 @@ W. L. Chang and G. Fox, "NIST big data interoperability framework: Volume 3 use 
 
 ## Concluding remarks
 
-CRISP-DM bears similarity to software engineering methodologies with an accepted series of phases but no fixed way series of steps through them. 
+CRISP-DM bears similarity to software engineering methodologies with an accepted series of phases and fixed entry/exit points. 
 
 DST captures the additional complexity in Data Science of having a much richer set of activities, not all of which are relevant for every DS project. 
 
@@ -243,6 +190,11 @@ This creates uncertainty for project management, which DST mitigates in a variet
 4. DST encourages techniques from workflow inference and management, collection of statistics, etc. <!-- .element: class="fragment" --> 
 
 
+### How DST relates to AutoML
+
+- 
+
+
 ## Thanks for listening! 
 
-<center>![Trajectory](img/DSspace:BBVA.svg) <!-- .element height="50%" width="50%" --></center>
+<center>![Trajectory](img/DSspace:BBVA.svg) <!-- .element height="70%" width="70%" --></center>
