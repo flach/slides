@@ -92,7 +92,7 @@ things you **can** do to data rather than things you **should** do to data.
 
 ### From mining to prospecting
 
-If data mining is like mining for precious metals, Data Science is like *prospecting*: searching for deposits of precious metals where profitable mines can be located. 
+If data mining is like extracting precious metals from a given location, Data Science is like *prospecting*: searching for deposits of precious metals where profitable mines can be located. 
 
 Such a prospecting process is fundamentally **exploratory** and can include some of the following activities: 
 
@@ -186,10 +186,10 @@ This creates uncertainty for project management, which DST mitigates in a variet
 
 ### How DST helps DS project management
 
-1. DST activities are systematically enumerated and hence reasonably comprehensive. <!-- .element: class="fragment" --> 
-2. A library of previous trajectories provides templates for new projects. <!-- .element: class="fragment" --> 
-3. DST trajectories facilitate project planning: e.g., activities can be assigned personnel and budgets, and transitions function as milestones. <!-- .element: class="fragment" --> 
-4. DST encourages techniques from workflow inference and management, collection of statistics, etc. <!-- .element: class="fragment" --> 
+1. DST activities are systematically enumerated and hence reasonably comprehensive. 
+2. A library of previous trajectories provides templates for new projects.  
+3. DST trajectories facilitate project planning: e.g., activities can be assigned personnel and budgets, and transitions function as milestones. 
+4. DST encourages techniques from workflow inference and management, collection of statistics, etc. 
 
 
 ### How DST relates to AutoML
