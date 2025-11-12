@@ -13,22 +13,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/2024_porto.md",
+                "file": "Obsidian/2025_recife_2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024_porto"
+              "title": "2025_recife_2"
             }
           }
         ]
       },
       {
-        "id": "c795f7e4be9811df",
+        "id": "f251399bd414277a",
         "type": "tabs",
         "children": [
           {
-            "id": "8512871bd71e0b19",
+            "id": "9c9a837eb234455f",
             "type": "leaf",
             "state": {
               "type": "reveal-preview-view",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Obsidian/2024_porto.md",
+                "file": "Obsidian/2025_recife_2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +120,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 2024_porto"
+              "title": "Backlinks for 2025_recife_2"
             }
           },
           {
@@ -183,27 +183,28 @@
   },
   "active": "181420683ce7c936",
   "lastOpenFiles": [
-    "_site/2025_recife_1/img/TKDE.png",
+    "_site/Obsidian/figs/conversation.jpg",
+    "Obsidian/figs/conversation.jpg",
+    "_site/Obsidian/figs/lab_segments_custom.jpeg",
+    "_site/Obsidian/figs/lab_segments.jpeg",
+    "_site/Obsidian/figs/husky_segments.jpeg",
+    "_site/Obsidian/figs/husky_org.jpeg",
+    "_site/Obsidian/figs/husky_mask.jpeg",
+    "_site/Obsidian/figs/elephant_x.pdf",
+    "_site/Obsidian/figs/diagram-dog2.pdf",
+    "_site/Obsidian/figs/diagram-dog1.pdf",
+    "_site/Obsidian/figs/conversation.pdf",
+    "Obsidian/figs/elephant_x.pdf",
+    "Obsidian/figs/diagram-dog2.pdf",
+    "Obsidian/figs/diagram-dog1.pdf",
+    "Obsidian/figs/husky_segments.jpeg",
+    "Obsidian/figs/husky_org.jpeg",
+    "Obsidian/figs/husky_mask.jpeg",
+    "Obsidian/figs/lab_segments.jpeg",
+    "Obsidian/figs/conversation.pdf",
+    "Obsidian/2024_porto.md",
     "_site/2025_recife_1/img/TKDE.pdf",
-    "_site/2025_recife_1/img/PeterCartoon-square.jpg",
-    "_site/2025_recife_1/img/NIST-Use-Cases.png",
-    "_site/2025_recife_1/img/Hero.png",
-    "_site/2025_recife_1/img/GT.png",
-    "_site/2025_recife_1/img/GT-old.png",
-    "_site/2025_recife_1/img/Ex_smart_parking_Dubrovnik.svg",
     "_site/2025_recife_1/img/Ex_smart_parking_Dubrovnik.pdf",
-    "_site/2025_recife_1/img/Ex_TourOperator.svg",
-    "_site/2025_recife_1/img/Ex_TourOperator.pdf",
-    "_site/2025_recife_1/img/Ex_Simulation.svg",
-    "_site/2025_recife_1/img/Ex_Simulation.pdf",
-    "_site/2025_recife_1/img/Ex_Insurance_CustomerProfiling.svg",
-    "_site/2025_recife_1/img/Ex_Insurance_CustomerProfiling.pdf",
-    "_site/2025_recife_1/img/Ex_DataProduct.svg",
-    "_site/2025_recife_1/img/Ex_DataProduct.pdf",
-    "_site/2025_recife_1/img/Ex_BBVA_tourism_spending.pdf",
-    "_site/2025_recife_1/img/EvolutionKDD.pdf",
-    "_site/2025_recife_1/img/EX_OLAP.pdf",
-    "_site/2025_recife_1/img/DSspace_example.pdf",
     "_site/2025_recife_1/MD/template.md",
     "_site/2025_recife_1/MD/S3.md",
     "_site/2025_recife_1/MD/S2.md",
@@ -218,7 +219,6 @@
     "2024_dmf copy/MD/S3.md",
     "2024_dmf copy/MD/MD.md",
     "2024_dmf copy/MD/S2.md",
-    "Obsidian/2024_porto.md",
     "Obsidian/2024_porto copy.md",
     "Obsidian/2023_xai.md",
     "_site/2025_recife/MD/All.md",

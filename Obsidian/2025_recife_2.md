@@ -4,7 +4,7 @@ verticalSeparator: vvv
 timeForPresentation: 2700
 ---
  <!-- slide bg="[[PeterCartoon-square.jpg]]" data-background-opacity="0.2"-->
-# Making Machine Learning more transparent
+# Transparent ML
 <br></br>
 <br></br>
 <br></br>
@@ -12,40 +12,78 @@ timeForPresentation: 2700
 ### Peter Flach, University of Bristol
 <br></br>
 https://flach.github.io/slides
-vvv
-## Outline
-1) Setting the scene
-2) Explainability for time series
-3) Actionable counterfactuals
-4) XAI tools
-6) Multi-class explanations
+
 ---
 # Setting the scene 
-This is how Kacper Sokol describes explainability in his PhD thesis: 
-<style>
-	.red-border{
-		border: 5px solid red;
-	}
-</style>
-::: block
-$$
-\texttt{Explainability} = \\
-\underbrace{%
-\texttt{Reasoning} \left( \texttt{Transparency} |  \texttt{Background Knowledge} \right)%
-}_{\textit{understanding}}%
-$$
-:::<!-- element class="red-border" -->
-::: block
-"which defines $\texttt{Explainability}$ as the **process** of deriving *understanding* – i.e., extracting meaning – through $\texttt{Reasoning}$ applied to $\texttt{Transparent}$ insights distilled from a data-driven predictive system that are adjusted to the explainee’s $\texttt{Background Knowledge}$." 
-::: <!-- .element: class="fragment"-->
+![[conversation.jpg|800]]
 
-[Explainability is in the mind of the beholder (arxiv)](https://arxiv.org/abs/2112.14466)
+[Glass-Box: Explaining AI Decisions With Counterfactual Statements Through Conversation With a Voice-enabled Virtual Assistant.](https://www.ijcai.org/proceedings/2018/0865.pdf)
 vvv
-## A simple geometric view
+## The geometry of counterfactuals
 ![[XAIplot.jpg|400]]
 - in black: decision boundary and weight vector <!-- .element: class="fragment"-->
 - in red: feature vector of instance currently on the negative side <!-- .element: class="fragment"-->
 - in blue: recourse/counterfactual (closest point on decision boundary) <!-- .element: class="fragment"-->
+vvv
+## Local Interpretable Model-Agnostic Explanations (LIME)
+
+<grid drag="100 50" drop="20 100 53" flow="row" align="stretch">
+![[husky_org.jpeg|1000]] <!-- .element: class="fragment"-->
+![[husky_segments.jpeg|1000]] <!-- .element: class="fragment"-->
+![[husky_mask.jpeg|1000]] <!-- .element: class="fragment"-->
+</grid>
+
+---
+# Counterfactuals
+::: block <!-- element class="red-border fragment"-->
+The recourse to be applied to the feature vector in order to change the predicted
+class.
+:::
+::: block <!-- .element: class="fragment"-->
+![[RP.jpg|200]] 
+This work was led by Rafael Poyiadzi. 
+:::
+vvv
+[FACE: Feasible and Actionable Counterfactual Explanations (AIES 2020)](https://dl.acm.org/doi/10.1145/3375627.3375850)
+
+![[face.png|500]] 
+Four counterfactuals for X: 
++ A has low margin; 
++ B is in a low-density region; 
++ C requires crossing a low-density region; 
++ **D is the one found by FACE.** 
+vvv
+## Example paths found by the FACE algorithm
+![[face2.png ]] 
+vvv
+## From 0 to 8: *MNIST* example
+![[mnist0.png]]
+![[mnist1.png]]
+---
+# Explaining multi-class predictions
+::: block <!-- .element: class="fragment"-->
+![[PGN.jpg|200]] 
+This work was led by Paul-Gauthier Noé. 
+:::
+vvv
+### Explaining a probabilistic prediction on the simplex with Shapley compositions 
+![[shapcomp0.png|800]]
+[ECAI 2024 paper](https://doi.org/10.3233/FAIA240605)
+| [arXiv](https://arxiv.org/abs/2408.01382)
+| [github](https://github.com/shapley-composition)
+vvv
+## Standard two-class Shapley values
+![[shapcomp1.png|1200]]
+vvv
+## True multi-class explanations
+![[shapcomp2.png]]
+vvv
+## Per-feature histograms
+![[shapcomp3.png]]
+vvv
+## Cumulative visualisation
+![[shapcomp4.png]]
+
 ---
 # XAI for time series
 ![[TS.jpg|200]] <!-- .element: class="fragment"-->
@@ -81,32 +119,6 @@ vvv
 ## Case study on MIMIC
 ![[sepsis_casestudy_LS.png]]
 ---
-# Counterfactuals
-::: block <!-- element class="red-border fragment"-->
-The recourse to be applied to the feature vector in order to change the predicted
-class.
-:::
-::: block <!-- .element: class="fragment"-->
-![[RP.jpg|200]] 
-This work was led by Rafael Poyiadzi. 
-:::
-vvv
-[FACE: Feasible and Actionable Counterfactual Explanations (AIES 2020)](https://dl.acm.org/doi/10.1145/3375627.3375850)
-
-![[face.png|500]] 
-Four counterfactuals for X: 
-+ A has low margin; 
-+ B is in a low-density region; 
-+ C requires crossing a low-density region; 
-+ **D is the one found by FACE.** 
-vvv
-## Example paths found by the FACE algorithm
-![[face2.png ]] 
-vvv
-## From 0 to 8: *MNIST* example
-![[mnist0.png]]
-![[mnist1.png]]
----
 # XAI tools
 ![[KS.jpg|200]] <!-- .element: class="fragment"-->
 Most of this work was led by Kacper Sokol <br>and funded by Thales UK.
@@ -131,31 +143,6 @@ vvv
 | [video](https://www.youtube.com/watch?v=Hy8udfSU5dM)
 - [Kacper's slides](https://usi.xmlx.io/slides/1_introduction/taxonomy.html)
 ---
-# Explaining multi-class predictions
-::: block <!-- .element: class="fragment"-->
-![[PGN.jpg|200]] 
-This work was led by Paul-Gauthier Noé. 
-:::
-vvv
-### Explaining a probabilistic prediction on the simplex with Shapley compositions 
-![[shapcomp0.png|800]]
-[ECAI 2024 paper](https://doi.org/10.3233/FAIA240605)
-| [arXiv](https://arxiv.org/abs/2408.01382)
-| [github](https://github.com/shapley-composition)
-vvv
-## Standard two-class Shapley values
-![[shapcomp1.png|1200]]
-vvv
-## True multi-class explanations
-![[shapcomp2.png]]
-vvv
-## Per-feature histograms
-![[shapcomp3.png]]
-vvv
-## Cumulative visualisation
-![[shapcomp4.png]]
-
----
 # Wrapping up
 vvv
 ## Take-home messages
@@ -166,12 +153,7 @@ vvv
 + We need to take probabilities seriously. 
   + In particular, they are rarely additive. 
 vvv
-## This research was supported by
-- [Thales UK](https://www.thalesgroup.com/en/countries/europe/united-kingdom)
-- [The Alan Turing Institute](https://www.turing.ac.uk)
-- [TAILOR European Network of Excellence Centres in Trustworthy AI](https://tailor-network.eu)
-- [UKRI Centre for Doctoral Training in Interactive AI](https://www.bristol.ac.uk/cdt/interactive-ai/)
-vvv
+
 <!-- slide bg="[[PeterCartoon-square.jpg]]" data-background-opacity="0.1"--><grid drag="100 30" drop="top" flow="row" align="stretch">
 ## With thanks to...
 </grid>
