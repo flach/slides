@@ -20,24 +20,23 @@
               "icon": "lucide-file",
               "title": "2025_recife_2"
             }
-          }
-        ]
-      },
-      {
-        "id": "f251399bd414277a",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "9c9a837eb234455f",
+            "id": "f59924e297aaf68c",
             "type": "leaf",
             "state": {
-              "type": "reveal-preview-view",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian/2025_recife_2.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Slide Preview"
+              "title": "2025_recife_2"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -181,36 +180,42 @@
       "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "181420683ce7c936",
+  "active": "7b2d84b878bf5636",
   "lastOpenFiles": [
-    "_site/Obsidian/figs/conversation.jpg",
-    "Obsidian/figs/conversation.jpg",
-    "_site/Obsidian/figs/lab_segments_custom.jpeg",
-    "_site/Obsidian/figs/lab_segments.jpeg",
-    "_site/Obsidian/figs/husky_segments.jpeg",
-    "_site/Obsidian/figs/husky_org.jpeg",
-    "_site/Obsidian/figs/husky_mask.jpeg",
-    "_site/Obsidian/figs/elephant_x.pdf",
-    "_site/Obsidian/figs/diagram-dog2.pdf",
-    "_site/Obsidian/figs/diagram-dog1.pdf",
-    "_site/Obsidian/figs/conversation.pdf",
-    "Obsidian/figs/elephant_x.pdf",
-    "Obsidian/figs/diagram-dog2.pdf",
-    "Obsidian/figs/diagram-dog1.pdf",
-    "Obsidian/figs/husky_segments.jpeg",
-    "Obsidian/figs/husky_org.jpeg",
-    "Obsidian/figs/husky_mask.jpeg",
-    "Obsidian/figs/lab_segments.jpeg",
-    "Obsidian/figs/conversation.pdf",
+    "Obsidian/export/2025_recife_2/figs/XAIplot2.jpg",
+    "Obsidian/export/2025_recife_2/figs/Sigmoid.png",
+    "Obsidian/export/2025_recife_2/figs/Ex_Insurance_CustomerProfiling.svg",
+    "Obsidian/export/2025_recife_2/figs/LIMEprobs.png",
+    "Obsidian/export/2025_recife_2/figs/PGN.jpg",
+    "Obsidian/export/2025_recife_2/figs/blimey.drawio",
+    "Obsidian/export/2025_recife_2/figs/husky_segments.jpeg",
+    "Obsidian/export/2025_recife_2/figs/elephant_x.pdf",
+    "Obsidian/export/2025_recife_2/figs/AH.jpg",
+    "Obsidian/export/2025_recife_2/figs/Ex_DataProduct.svg",
+    "Obsidian/export/2025_recife_2/figs/Crisp-DM.svg",
+    "Obsidian/export/2025_recife_2/figs/lab_segments_custom.jpeg",
+    "Obsidian/export/2025_recife_2/figs/Ex_smart_parking_Dubrovnik.svg",
+    "Obsidian/export/2025_recife_2/figs/academic_software.drawio",
+    "Obsidian/export/2025_recife_2/figs/PDFs/Sigmoid.pdf",
+    "Obsidian/export/2025_recife_2/figs/PDFs/shapcomp4.pdf.sb-163db221-dgcIkb",
+    "Obsidian/export/2025_recife_2/figs/PDFs/Perturb_Intution.pdf",
+    "Obsidian/export/2025_recife_2/figs/PDFs/blimey.pdf",
+    "Obsidian/export/2025_recife_2/figs/PDFs/sepsis_casestudy_LS.pdf",
+    "Obsidian/export/2025_recife_2/figs/PDFs/SegmentationDemonstration.pdf",
+    "Obsidian/export/2025_recife_2/figs/PDFs/shapcomp3.pdf.sb-163db221-ph1rTi",
+    "export/Untitled.md",
+    "Obsidian/2025_recife_2.md",
+    "Obsidian/export/2025_recife_2/plugin/chalkboard/README.md",
+    "Obsidian/export/2025_recife_2/plugin/chart/README.md",
+    "Obsidian/export/2025_recife_2/plugin/customcontrols/README.md",
+    "Obsidian/export/2025_recife_2/plugin/menu/CONTRIBUTING.md",
+    "Obsidian/export/2025_recife_2/plugin/menu/README.md",
     "Obsidian/2024_porto.md",
-    "_site/2025_recife_1/img/TKDE.pdf",
-    "_site/2025_recife_1/img/Ex_smart_parking_Dubrovnik.pdf",
     "_site/2025_recife_1/MD/template.md",
     "_site/2025_recife_1/MD/S3.md",
     "_site/2025_recife_1/MD/S2.md",
     "_site/2025_recife_1/MD/MD.md",
     "Obsidian/2024_recife_2.md",
-    "Obsidian/2025_recife_2.md",
     "2025_recife_1/MD/template.md",
     "2025_recife_1/MD/S2.md",
     "2025_recife_1/MD/S3.md",
@@ -222,12 +227,6 @@
     "Obsidian/2024_porto copy.md",
     "Obsidian/2023_xai.md",
     "_site/2025_recife/MD/All.md",
-    "2025_recife/MD/All.md",
-    "2025_recife/_site/MD/All.md",
-    "export/2024_porto/plugin/chalkboard/README.md",
-    "export/2024_porto/plugin/chart/README.md",
-    "export/2024_porto/plugin/customcontrols/README.md",
-    "export/2024_porto/plugin/menu/CONTRIBUTING.md",
-    "export/2024_porto/plugin/menu/README.md"
+    "2025_recife/MD/All.md"
   ]
 }
