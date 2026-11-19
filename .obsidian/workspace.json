@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Obsidian/2026_uct.md",
+                "file": "Obsidian/2025_recife_2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026_uct"
+              "title": "2025_recife_2"
             }
           }
         ]
@@ -182,8 +182,9 @@
       "obsidian-advanced-slides:Show Slide Preview": false
     }
   },
-  "active": "7b2d84b878bf5636",
+  "active": "be6c85e3f8d208e8",
   "lastOpenFiles": [
+    "Obsidian/2026_uct.md",
     "Obsidian/export/2026_uct/figs/XAIplot2.jpg",
     "Obsidian/export/2026_uct/figs/Sigmoid.png",
     "Obsidian/export/2026_uct/figs/Ex_Insurance_CustomerProfiling.svg",
@@ -196,7 +197,6 @@
     "Obsidian/export/2026_uct/figs/Ex_DataProduct.svg",
     "Obsidian/export/2026_uct/figs/Crisp-DM.svg",
     "Obsidian/export/2026_uct/figs/lab_segments_custom.jpeg",
-    "Obsidian/export/2026_uct/figs/Ex_smart_parking_Dubrovnik.svg",
     "Obsidian/export/2026_uct/figs/academic_software.drawio",
     "Obsidian/export/2026_uct/figs/PDFs/zero_TS_demonstration.pdf",
     "Obsidian/export/2026_uct/figs/PDFs/taxonomy.pdf",
@@ -211,7 +211,6 @@
     "Obsidian/export/2026_uct/plugin/menu/CONTRIBUTING.md",
     "Obsidian/export/2026_uct/plugin/menu/README.md",
     "Obsidian/2025_recife_2.md",
-    "Obsidian/2026_uct.md",
     "export/Untitled.md",
     "Obsidian/export/2025_recife_2/plugin/chalkboard/README.md",
     "Obsidian/export/2025_recife_2/plugin/chart/README.md",
